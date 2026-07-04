@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verhal — Learn without limits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#070B14;
+  --navy-900:#0B1220;
+  --navy-800:#121A2E;
+  --navy-700:#1B2540;
+  --navy-600:#263155;
+  --gold-500:#D4AF37;
+  --gold-300:#E8CC7A;
+  --gold-700:#8f7420;
+  --ink-50:#F5F3EC;
+  --ink-300:#B9C0D0;
+  --ink-500:#7C88A3;
+  --success:#3FB68B;
+  --danger:#E2604F;
+  --radius:10px;
+  --font-display:'Fraunces',serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+[data-theme="light"]{
+  --navy-950:#F7F5EF;
+  --navy-900:#FFFFFF;
+  --navy-800:#F1EEE4;
+  --navy-700:#E3DFD1;
+  --navy-600:#CFC9B4;
+  --ink-50:#141A26;
+  --ink-300:#3E4557;
+  --ink-500:#6B7284;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--navy-900);
+  color:var(--ink-50);
+  font-family:var(--font-body);
+  transition:background .25s ease, color .25s ease;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+img{max-width:100%;display:block;}
+::selection{background:var(--gold-500);color:var(--navy-950);}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;margin:0 0 .4em;line-height:1.15;}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold-500);
+  display:flex;align-items:center;gap:.5em;
+}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--gold-500);display:inline-block;}
+
+.container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  padding:.85em 1.5em;border-radius:8px;border:1px solid transparent;
+  font-weight:600;font-size:.92rem;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-primary{background:var(--gold-500);color:var(--navy-950);}
+.btn-primary:hover{background:var(--gold-300);transform:translateY(-1px);}
+.btn-outline{border-color:var(--navy-600);color:var(--ink-50);background:transparent;}
+.btn-outline:hover{border-color:var(--gold-500);color:var(--gold-500);}
+.btn-ghost{background:transparent;color:var(--ink-300);}
+.btn-ghost:hover{color:var(--ink-50);}
+.btn-block{width:100%;}
+.btn-sm{padding:.55em 1em;font-size:.82rem;}
+.btn-danger{background:transparent;border-color:var(--danger);color:var(--danger);}
+.btn-danger:hover{background:var(--danger);color:var(--navy-950);}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* Nav */
+header.topnav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--navy-900) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--navy-700);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:.6em;font-family:var(--font-display);font-size:1.35rem;font-weight:700;letter-spacing:.01em;}
+.brand .mark{
+  width:30px;height:30px;border-radius:6px;
+  background:linear-gradient(160deg,var(--gold-300),var(--gold-700));
+  display:flex;align-items:center;justify-content:center;color:var(--navy-950);font-family:var(--font-display);font-weight:700;
+}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:.92rem;color:var(--ink-300);font-weight:500;}
+.nav-links a:hover, .nav-links a.active{color:var(--ink-50);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.icon-btn{
+  width:36px;height:36px;border-radius:8px;border:1px solid var(--navy-700);background:transparent;
+  color:var(--ink-300);display:flex;align-items:center;justify-content:center;
+}
+.icon-btn:hover{color:var(--gold-500);border-color:var(--gold-500);}
+.avatar-chip{display:flex;align-items:center;gap:.6em;padding:.4em .7em .4em .4em;border-radius:99px;border:1px solid var(--navy-700);}
+.avatar-chip .dot{width:26px;height:26px;border-radius:99px;background:var(--gold-500);color:var(--navy-950);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;font-family:var(--font-mono);}
+.avatar-chip span{font-size:.85rem;font-weight:600;}
+.mobile-toggle{display:none;background:none;border:none;color:var(--ink-50);font-size:1.4rem;}
+
+@media (max-width:900px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:var(--navy-900);border-bottom:1px solid var(--navy-700);flex-direction:column;padding:16px 24px;gap:16px;transform:translateY(-130%);transition:transform .25s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .mobile-toggle{display:block;}
+}
+
+/* Hero */
+.hero{padding:96px 0 80px;position:relative;overflow:hidden;}
+.hero::before{
+  content:"";position:absolute;inset:-20% -10% auto -10%;height:500px;
+  background:radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--gold-500) 16%, transparent), transparent 60%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;}
+.hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem);}
+.hero h1 em{font-style:normal;color:var(--gold-500);}
+.hero p.lead{color:var(--ink-300);font-size:1.08rem;max-width:44ch;margin:18px 0 30px;}
+.hero-ctas{display:flex;gap:14px;margin-bottom:34px;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+.hero-stats div b{display:block;font-family:var(--font-mono);font-size:1.4rem;color:var(--gold-500);}
+.hero-stats div span{font-size:.78rem;color:var(--ink-500);}
+
+/* Catalog stack — signature element: fanned index-card deck */
+.card-deck{position:relative;height:380px;}
+.deck-card{
+  position:absolute;width:280px;padding:20px;border-radius:var(--radius);
+  background:var(--navy-800);border:1px solid var(--navy-700);
+  box-shadow:0 20px 40px -18px rgba(0,0,0,.5);
+}
+.deck-card .ribbon{position:absolute;top:0;left:20px;width:14px;height:34px;background:var(--gold-500);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);}
+.deck-card h4{font-size:1rem;margin-bottom:6px;}
+.deck-card p{font-size:.8rem;color:var(--ink-500);margin:0 0 10px;}
+.deck-card .bar{height:5px;border-radius:99px;background:var(--navy-700);overflow:hidden;}
+.deck-card .bar i{display:block;height:100%;background:var(--gold-500);}
+.deck-1{top:0;left:60px;transform:rotate(-6deg);z-index:1;}
+.deck-2{top:40px;left:10px;transform:rotate(3deg);z-index:2;}
+.deck-3{top:90px;left:80px;transform:rotate(-2deg);z-index:3;}
+@media (max-width:900px){ .card-deck{display:none;} .hero-grid{grid-template-columns:1fr;} }
+
+/* Sections */
+section.block{padding:70px 0;}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:34px;gap:20px;flex-wrap:wrap;}
+.section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr;} .grid-4{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.grid-3{grid-template-columns:1fr;} .grid-4{grid-template-columns:1fr;}}
+
+/* Course card */
+.course-card{
+  background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease, border-color .18s ease;position:relative;
+}
+.course-card:hover{transform:translateY(-4px);border-color:var(--gold-700);}
+.course-thumb{height:130px;position:relative;display:flex;align-items:flex-end;padding:14px;}
+.course-thumb .cat{font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(0,0,0,.35);padding:.3em .7em;border-radius:99px;color:#fff;}
+.course-body{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column;gap:8px;}
+.course-body h4{font-size:1.02rem;margin:0;}
+.course-meta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--ink-500);}
+.stars{color:var(--gold-500);font-size:.82rem;}
+.course-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px dashed var(--navy-700);}
+.price{font-family:var(--font-mono);font-weight:600;color:var(--gold-500);}
+.price.free{color:var(--success);}
+.badge{font-size:.68rem;font-family:var(--font-mono);padding:.25em .6em;border-radius:5px;border:1px solid var(--navy-600);color:var(--ink-500);}
+
+/* progress ribbon signature */
+.progress-ribbon{position:relative;height:8px;background:var(--navy-700);border-radius:99px;overflow:hidden;}
+.progress-ribbon i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--gold-700),var(--gold-500));border-radius:99px;}
+.progress-label{display:flex;justify-content:space-between;font-size:.74rem;color:var(--ink-500);margin-top:6px;font-family:var(--font-mono);}
+
+/* Testimonials */
+.testi-card{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:24px;}
+.testi-card p{color:var(--ink-300);font-size:.94rem;line-height:1.6;}
+.testi-who{display:flex;align-items:center;gap:10px;margin-top:16px;}
+.testi-who .dot{width:34px;height:34px;border-radius:99px;background:var(--navy-700);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-mono);color:var(--gold-500);}
+.testi-who small{color:var(--ink-500);display:block;}
+
+footer{border-top:1px solid var(--navy-700);padding:40px 0;margin-top:40px;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--ink-500);font-size:.85rem;}
+
+/* Filters / listing */
+.filter-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:28px;padding:16px;background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);}
+select, input[type=text], input[type=email], input[type=password], input[type=number], textarea{
+  background:var(--navy-900);border:1px solid var(--navy-700);color:var(--ink-50);
+  padding:.7em .9em;border-radius:7px;font-family:inherit;font-size:.88rem;outline:none;
+}
+select:focus, input:focus, textarea:focus{border-color:var(--gold-500);box-shadow:0 0 0 3px color-mix(in srgb, var(--gold-500) 20%, transparent);}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.field label{font-size:.8rem;color:var(--ink-300);font-weight:600;}
+.field small.err{color:var(--danger);font-size:.76rem;}
+.field.has-err input, .field.has-err select{border-color:var(--danger);}
+
+/* Page header */
+.page-head{padding:50px 0 30px;border-bottom:1px solid var(--navy-700);}
+.breadcrumb{font-size:.8rem;color:var(--ink-500);margin-bottom:14px;font-family:var(--font-mono);}
+.breadcrumb a:hover{color:var(--gold-500);}
+
+/* Course detail */
+.detail-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start;padding:40px 0 80px;}
+@media (max-width:900px){.detail-grid{grid-template-columns:1fr;}}
+.curriculum-item{border:1px solid var(--navy-700);border-radius:8px;margin-bottom:10px;overflow:hidden;}
+.curriculum-head{display:flex;justify-content:space-between;padding:14px 16px;background:var(--navy-800);cursor:pointer;font-weight:600;font-size:.92rem;}
+.lesson-row{display:flex;justify-content:space-between;padding:10px 18px;font-size:.85rem;color:var(--ink-300);border-top:1px solid var(--navy-700);}
+.lesson-row .l-left{display:flex;align-items:center;gap:10px;}
+.sticky-card{position:sticky;top:90px;background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:24px;}
+.sticky-card .big-price{font-family:var(--font-mono);font-size:1.8rem;color:var(--gold-500);margin-bottom:14px;}
+.instructor-strip{display:flex;align-items:center;gap:12px;margin:20px 0;padding:14px;border:1px dashed var(--navy-700);border-radius:8px;}
+.trust-row{display:flex;gap:16px;margin-top:16px;font-size:.76rem;color:var(--ink-500);flex-wrap:wrap;}
+.trust-row span{display:flex;align-items:center;gap:6px;}
+
+/* Auth */
+.auth-wrap{max-width:440px;margin:70px auto 100px;padding:0 24px;}
+.auth-card{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:34px;}
+.role-toggle{display:flex;gap:8px;margin-bottom:22px;background:var(--navy-900);border:1px solid var(--navy-700);border-radius:8px;padding:4px;}
+.role-toggle button{flex:1;padding:.65em;border-radius:6px;border:none;background:transparent;color:var(--ink-500);font-weight:600;font-size:.85rem;}
+.role-toggle button.active{background:var(--gold-500);color:var(--navy-950);}
+.auth-switch{text-align:center;margin-top:18px;font-size:.86rem;color:var(--ink-500);}
+.auth-switch a{color:var(--gold-500);font-weight:600;}
+.demo-note{background:var(--navy-900);border:1px dashed var(--navy-600);border-radius:8px;padding:12px 14px;font-size:.78rem;color:var(--ink-500);margin-bottom:20px;}
+
+/* Dashboards */
+.dash-shell{display:grid;grid-template-columns:250px 1fr;gap:0;min-height:70vh;}
+@media (max-width:860px){.dash-shell{grid-template-columns:1fr;}}
+.dash-side{border-right:1px solid var(--navy-700);padding:28px 18px;}
+@media (max-width:860px){.dash-side{border-right:none;border-bottom:1px solid var(--navy-700);display:flex;overflow-x:auto;gap:6px;padding:14px 18px;}}
+.dash-side .who{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--navy-700);}
+@media (max-width:860px){.dash-side .who{display:none;}}
+.dash-side .who .dot{width:42px;height:42px;border-radius:99px;background:var(--gold-500);color:var(--navy-950);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-mono);}
+.dash-side .who b{display:block;}
+.dash-side .who small{color:var(--ink-500);}
+.dash-nav a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:8px;color:var(--ink-300);font-size:.9rem;font-weight:500;margin-bottom:4px;white-space:nowrap;}
+.dash-nav a:hover{background:var(--navy-800);color:var(--ink-50);}
+.dash-nav a.active{background:color-mix(in srgb, var(--gold-500) 14%, transparent);color:var(--gold-500);}
+.dash-main{padding:34px 30px;}
+.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;flex-wrap:wrap;gap:14px;}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px;}
+@media (max-width:760px){.stat-row{grid-template-columns:1fr 1fr;}}
+.stat-card{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:18px;}
+.stat-card b{display:block;font-family:var(--font-mono);font-size:1.5rem;color:var(--gold-500);}
+.stat-card span{font-size:.78rem;color:var(--ink-500);}
+table{width:100%;border-collapse:collapse;font-size:.87rem;}
+table th{text-align:left;color:var(--ink-500);font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;border-bottom:1px solid var(--navy-700);}
+table td{padding:12px;border-bottom:1px solid var(--navy-700);color:var(--ink-300);}
+.table-wrap{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);overflow:hidden;overflow-x:auto;}
+.pill{padding:.25em .7em;border-radius:99px;font-size:.72rem;font-weight:600;font-family:var(--font-mono);}
+.pill.ok{background:color-mix(in srgb, var(--success) 20%, transparent);color:var(--success);}
+.pill.warn{background:color-mix(in srgb, var(--gold-500) 20%, transparent);color:var(--gold-500);}
+.pill.fail{background:color-mix(in srgb, var(--danger) 20%, transparent);color:var(--danger);}
+.enroll-row{display:flex;gap:16px;background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:16px;margin-bottom:14px;align-items:center;}
+.enroll-row .thumb{width:70px;height:56px;border-radius:6px;flex-shrink:0;}
+.enroll-row .body{flex:1;min-width:0;}
+.enroll-row h4{margin:0 0 6px;font-size:.95rem;}
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink-500);}
+.empty-state .glyph{font-size:2.4rem;margin-bottom:10px;}
+
+/* Lesson viewer */
+.lesson-shell{display:grid;grid-template-columns:1fr 300px;gap:0;}
+@media (max-width:900px){.lesson-shell{grid-template-columns:1fr;}}
+.lesson-player{background:#000;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--ink-500);border-radius:var(--radius) 0 0 var(--radius);}
+@media (max-width:900px){.lesson-player{border-radius:var(--radius);}}
+.lesson-content{padding:22px;background:var(--navy-800);border:1px solid var(--navy-700);border-top:none;}
+.lesson-sidebar{border:1px solid var(--navy-700);border-left:none;padding:16px;max-height:520px;overflow-y:auto;}
+@media (max-width:900px){.lesson-sidebar{border-left:1px solid var(--navy-700);border-top:none;}}
+.lesson-list-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:7px;font-size:.85rem;cursor:pointer;color:var(--ink-300);}
+.lesson-list-item:hover{background:var(--navy-700);}
+.lesson-list-item.current{background:color-mix(in srgb, var(--gold-500) 14%, transparent);color:var(--gold-500);}
+.check-circ{width:20px;height:20px;border-radius:99px;border:1.5px solid var(--navy-600);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;}
+.check-circ.done{background:var(--success);border-color:var(--success);color:#fff;}
+
+/* Quiz */
+.quiz-card{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:28px;max-width:680px;margin:0 auto;}
+.quiz-progress{font-family:var(--font-mono);font-size:.76rem;color:var(--ink-500);margin-bottom:8px;}
+.opt-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--navy-700);border-radius:8px;margin-bottom:10px;cursor:pointer;}
+.opt-row:hover{border-color:var(--gold-700);}
+.opt-row.selected{border-color:var(--gold-500);background:color-mix(in srgb, var(--gold-500) 10%, transparent);}
+.opt-row.correct{border-color:var(--success);background:color-mix(in srgb, var(--success) 12%, transparent);}
+.opt-row.incorrect{border-color:var(--danger);background:color-mix(in srgb, var(--danger) 12%, transparent);}
+.opt-letter{width:26px;height:26px;border-radius:6px;background:var(--navy-700);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.78rem;flex-shrink:0;}
+.quiz-result-ring{width:130px;height:130px;border-radius:99px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:1.6rem;font-weight:700;border:6px solid var(--navy-700);}
+.quiz-result-ring.pass{border-color:var(--success);color:var(--success);}
+.quiz-result-ring.fail{border-color:var(--danger);color:var(--danger);}
+
+/* Checkout */
+.checkout-steps{display:flex;gap:0;margin-bottom:36px;max-width:520px;}
+.co-step{flex:1;text-align:center;font-size:.76rem;color:var(--ink-500);font-family:var(--font-mono);position:relative;padding-bottom:14px;}
+.co-step::after{content:"absolute;bottom:0;left:0;right:0;height:2px;background:var(--navy-700);}
+.co-step.active{color:var(--gold-500);}
+.co-step.active::after, .co-step.done::after{background:var(--gold-500);}
+.pay-method{display:flex;align-items:center;gap:14px;padding:16px;border:1.5px solid var(--navy-700);border-radius:8px;margin-bottom:12px;cursor:pointer;}
+.pay-method:hover{border-color:var(--gold-700);}
+.pay-method.selected{border-color:var(--gold-500);background:color-mix(in srgb, var(--gold-500) 8%, transparent);}
+.pay-method .logo{width:44px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.7rem;font-family:var(--font-mono);color:#fff;}
+.summary-line{display:flex;justify-content:space-between;padding:10px 0;font-size:.9rem;color:var(--ink-300);border-bottom:1px dashed var(--navy-700);}
+.summary-line.total{font-weight:700;color:var(--ink-50);font-size:1.05rem;border-bottom:none;padding-top:16px;}
+.status-screen{text-align:center;max-width:440px;margin:60px auto;}
+.status-icon{width:76px;height:76px;border-radius:99px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;}
+.status-icon.success{background:color-mix(in srgb, var(--success) 20%, transparent);color:var(--success);}
+.status-icon.fail{background:color-mix(in srgb, var(--danger) 20%, transparent);color:var(--danger);}
+
+/* toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--navy-800);border:1px solid var(--gold-500);color:var(--ink-50);padding:12px 20px;border-radius:8px;font-size:.86rem;z-index:200;transition:transform .3s ease;box-shadow:0 10px 30px rgba(0,0,0,.4);}
+#toast.show{transform:translateX(-50%) translateY(0);}
+
+.hidden{display:none !important;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:600px){.two-col{grid-template-columns:1fr;}}
+.tab-row{display:flex;gap:8px;margin-bottom:24px;border-bottom:1px solid var(--navy-700);flex-wrap:wrap;}
+.tab-btn{padding:10px 4px;margin-right:20px;background:none;border:none;color:var(--ink-500);font-weight:600;font-size:.88rem;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.tab-btn.active{color:var(--gold-500);border-color:var(--gold-500);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:150;padding:20px;}
+.modal-box{background:var(--navy-800);border:1px solid var(--navy-700);border-radius:var(--radius);padding:26px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;}
+.modal-box h3{margin-bottom:18px;}
+.close-x{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--ink-500);font-size:1.3rem;}
+</style>
+</head>
+<body data-theme="dark">
+
+<header class="topnav">
+  <div class="nav-inner">
+    <a href="#/home" class="brand"><span class="mark">V</span> Verhal</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#/home" data-nav="home">Home</a>
+      <a href="#/courses" data-nav="courses">Courses</a>
+      <a href="#/dashboard/student" data-nav="student">Student Dashboard</a>
+      <a href="#/dashboard/instructor" data-nav="instructor">Instructor Dashboard</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">◐</button>
+      <div id="authArea"></div>
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="container foot-grid">
+    <div><strong style="color:var(--ink-50)">Verhal</strong><br>A calmer way to teach and learn online.</div>
+    <div>Courses · Instructors · Pricing · Support</div>
+    <div>Dhaka, Bangladesh · Payments via bKash, Nagad, SSLCommerz, Card</div>
+    <div>© 2026 Verhal. Demo build.</div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+/* ======================= DATA LAYER ======================= */
+const DB_KEY='verhal_db_v1';
+const SESSION_KEY='verhal_session_v1';
+
+function uid(p){ return p+'_'+Math.random().toString(36).slice(2,9); }
+
+function seedDB(){
+  const instructorId = 'u_inst_1';
+  const instructor2 = 'u_inst_2';
+  const users = [
+    {id:instructorId, name:'Rafiq Ahmed', email:'rafiq@verhal.edu', password:'teach123', role:'instructor', joined:'2025-11-02'},
+    {id:instructor2, name:'Nusrat Jahan', email:'nusrat@verhal.edu', password:'teach123', role:'instructor', joined:'2025-12-10'},
+    {id:'u_stud_1', name:'Tanvir Hasan', email:'student@verhal.edu', password:'learn123', role:'student', joined:'2026-01-15'}
+  ];
+  const courses = [
+    {
+      id:'c1', title:'Modern Frontend Development with JavaScript', category:'Web Development', level:'Beginner',
+      price:2400, instructorId, instructorName:'Rafiq Ahmed', color:'linear-gradient(135deg,#2b3a67,#1b2540)',
+      summary:'Build real interfaces from scratch — HTML, CSS and JavaScript fundamentals through to shipping a live project.',
+      rating:4.8, reviews:[{name:'Mim.',text:'Clear explanations, practical projects. Worth it.',rating:5},{name:'Rakib.',text:'Good pacing for a beginner like me.',rating:4}],
+      curriculum:[
+        {id:'m1',title:'Foundations', lessons:[
+          {id:'l1',title:'How the web actually works',type:'video',duration:'8:20'},
+          {id:'l2',title:'Setting up your first page',type:'text',content:'In this lesson we create index.html, link a stylesheet, and open it in the browser. Structure first, style later — that habit will save you hours of confusion down the line.'}
+        ]},
+        {id:'m2',title:'JavaScript Essentials', lessons:[
+          {id:'l3',title:'Variables and functions',type:'video',duration:'12:05'},
+          {id:'l4',title:'Working with the DOM',type:'video',duration:'15:40'},
+          {id:'l5',title:'Events and interactivity',type:'text',content:'Every interactive page is really just a set of listeners waiting for something to happen — a click, a keystroke, a page load. We will wire up three of them together.'}
+        ]}
+      ],
+      quiz:{id:'q1',title:'Frontend Fundamentals Check',passScore:70,questions:[
+        {id:'qq1',text:'Which tag is used to link an external stylesheet?',options:['<style>','<link>','<css>','<script>'],correctIndex:1},
+        {id:'qq2',text:'Which keyword declares a block-scoped variable in JS?',options:['var','let','global','define'],correctIndex:1},
+        {id:'qq3',text:'What does the DOM represent?',options:['A database','The page structure as objects','A CSS framework','A server'],correctIndex:1}
+      ]}
+    },
+    {
+      id:'c2', title:'UI/UX Design Principles for Products', category:'Design', level:'Beginner',
+      price:1800, instructorId:instructor2, instructorName:'Nusrat Jahan', color:'linear-gradient(135deg,#4a3b2a,#1b2540)',
+      summary:'Learn how to think about layout, color, and hierarchy before you ever open a design tool.',
+      rating:4.6, reviews:[{name:'Farhana.',text:'Changed how I look at every app I use now.',rating:5}],
+      curriculum:[
+        {id:'m1',title:'Seeing Like a Designer', lessons:[
+          {id:'l1',title:'Hierarchy and contrast',type:'video',duration:'10:12'},
+          {id:'l2',title:'Spacing systems',type:'text',content:'An 8px grid keeps every margin and padding decision consistent. We will rebuild a messy layout using only multiples of 8.'}
+        ]},
+        {id:'m2',title:'Color & Type', lessons:[
+          {id:'l3',title:'Choosing a palette that behaves',type:'video',duration:'9:48'}
+        ]}
+      ],
+      quiz:{id:'q2',title:'Design Principles Check',passScore:70,questions:[
+        {id:'qq1',text:'What does visual hierarchy help a user do?',options:['Load pages faster','Know what to look at first','Reduce file size','Choose fonts'],correctIndex:1},
+        {id:'qq2',text:'An 8px spacing grid is mainly used for:',options:['Consistency','Faster typing','SEO','Security'],correctIndex:0}
+      ]}
+    },
+    {
+      id:'c3', title:'Digital Marketing for Small Businesses', category:'Marketing', level:'Intermediate',
+      price:0, instructorId, instructorName:'Rafiq Ahmed', color:'linear-gradient(135deg,#3a2b4a,#1b2540)',
+      summary:'A free primer on running social and search campaigns on a limited budget.',
+      rating:4.4, reviews:[],
+      curriculum:[
+        {id:'m1',title:'Getting Started', lessons:[
+          {id:'l1',title:'Setting a monthly budget',type:'text',content:'Before spending a single taka on ads, define what a successful result actually looks like — a sale, a signup, or a message.'},
+          {id:'l2',title:'Choosing your first channel',type:'video',duration:'7:30'}
+        ]}
+      ],
+      quiz:{id:'q3',title:'Marketing Basics Check',passScore:60,questions:[
+        {id:'qq1',text:'What should you define before running ads?',options:['Logo color','Success metric','Font size','Domain name'],correctIndex:1}
+      ]}
+    }
+  ];
+  return {users, courses, enrollments:[], payments:[]};
+}
+
+function loadDB(){
+  let raw = localStorage.getItem(DB_KEY);
+  if(!raw){ const db = seedDB(); localStorage.setItem(DB_KEY, JSON.stringify(db)); return db; }
+  try{ return JSON.parse(raw); }catch(e){ const db = seedDB(); localStorage.setItem(DB_KEY, JSON.stringify(db)); return db; }
+}
+function saveDB(db){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+let DB = loadDB();
+
+function getSession(){ try{ return JSON.parse(localStorage.getItem(SESSION_KEY)); }catch(e){ return null; } }
+function setSession(userId){ localStorage.setItem(SESSION_KEY, JSON.stringify({userId})); }
+function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+function currentUser(){ const s = getSession(); if(!s) return null; return DB.users.find(u=>u.id===s.userId) || null; }
+
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(window._toastT); window._toastT=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+/* ======================= ROUTER ======================= */
+function route(){
+  const hash = location.hash || '#/home';
+  const parts = hash.replace('#/','').split('/');
+  const view = parts[0] || 'home';
+  renderNav(view);
+  const app = document.getElementById('app');
+  window.scrollTo({top:0});
+  switch(view){
+    case 'home': app.innerHTML = viewHome(); afterHome(); break;
+    case 'courses': app.innerHTML = viewCourses(); afterCourses(); break;
+    case 'course': app.innerHTML = viewCourseDetail(parts[1]); afterCourseDetail(parts[1]); break;
+    case 'login': app.innerHTML = viewAuth('login'); afterAuth('login'); break;
+    case 'register': app.innerHTML = viewAuth('register'); afterAuth('register'); break;
+    case 'checkout': app.innerHTML = viewCheckout(parts[1]); afterCheckout(parts[1]); break;
+    case 'lesson': app.innerHTML = viewLesson(parts[1], parts[2]); afterLesson(parts[1], parts[2]); break;
+    case 'quiz': app.innerHTML = viewQuiz(parts[1]); afterQuiz(parts[1]); break;
+    case 'certificate': app.innerHTML = viewCertificate(parts[1]); afterCertificate(parts[1]); break;
+    case 'editor': app.innerHTML = viewCourseEditor(parts[1]); afterCourseEditor(parts[1]); break;
+    case 'dashboard': app.innerHTML = viewDashboardGate(parts[1]); afterDashboard(parts[1], parts[2]); break;
+    default: app.innerHTML = '<div class="container" style="padding:80px 0;text-align:center;color:var(--ink-500)">Page not found.</div>';
+  }
+}
+window.addEventListener('hashchange', route);
+
+function renderNav(view){
+  document.querySelectorAll('[data-nav]').forEach(a=>a.classList.remove('active'));
+  const map={home:'home',courses:'courses',dashboard:'student'};
+  const u = currentUser();
+  const authArea = document.getElementById('authArea');
+  if(u){
+    authArea.innerHTML = \`<a href="#/dashboard/\${u.role}" class="avatar-chip"><span class="dot">\${u.name.charAt(0)}</span><span>\${u.name.split(' ')[0]}</span></a>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn" style="margin-left:8px">Log out</button>\`;
+    document.getElementById('logoutBtn').onclick=()=>{ clearSession(); toast('Logged out.'); location.hash='#/home'; };
+    const studentLink = document.querySelector('[data-nav="student"]');
+    const instLink = document.querySelector('[data-nav="instructor"]');
+    if(studentLink) studentLink.style.display = u.role==='student' ? '' : 'none';
+    if(instLink) instLink.style.display = u.role==='instructor' ? '' : 'none';
+  } else {
+    authArea.innerHTML = \`<a href="#/login" class="btn btn-ghost btn-sm">Log in</a><a href="#/register" class="btn btn-primary btn-sm">Sign up</a>\`;
+    const studentLink = document.querySelector('[data-nav="student"]');
+    const instLink = document.querySelector('[data-nav="instructor"]');
+    if(studentLink) studentLink.style.display = 'none';
+    if(instLink) instLink.style.display = 'none';
+  }
+  const activeMap = {home:'home',courses:'courses'};
+  if(activeMap[view]){ const el = document.querySelector('[data-nav="'+activeMap[view]+'"]'); if(el) el.classList.add('active'); }
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+/* ======================= HOME ======================= */
+function stars(n){ const full=Math.round(n); return '★★★★★☆☆☆☆☆'.slice(5-full,10-full); }
+
+function viewHome(){
+  const featured = DB.courses.slice(0,3);
+  return \`
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Learning platform</div>
+        <h1>Study on your own schedule, <em>graduate on your own terms.</em></h1>
+        <p class="lead">Verhal brings courses, quizzes, and progress tracking into one calm, distraction-free place.</p>
+        <div class="hero-ctas">
+          <a href="#/courses" class="btn btn-primary">Browse courses</a>
+          <a href="#/register" class="btn btn-outline">Become an instructor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Catalog</div><h2>Featured courses</h2></div>
+        <a href="#/courses" class="btn btn-outline btn-sm">View all courses</a>
+      </div>
+      <div class="grid-3">\${featured.map(courseCard).join('')}</div>
+    </div>
+  </section>
+  \`;
+}
+function afterHome(){}
+
+function courseCard(c){
+  const priceHtml = c.price===0 ? \`<span class="price free">Free</span>\` : \`<span class="price">৳\${c.price.toLocaleString()}</span>\`;
+  return \`
+  <a href="#/course/\${c.id}" class="course-card">
+    <div class="course-thumb" style="background:\${c.color}"><span class="cat">\${c.category}</span></div>
+    <div class="course-body">
+      <h4>\${c.title}</h4>
+      <div class="course-meta"><span>\${c.instructorName}</span><span class="stars">\${stars(c.rating)} \${c.rating}</span></div>
+      <div class="course-foot"><span class="badge">\${c.level}</span>\${priceHtml}</div>
+    </div>
+  </a>\`;
+}
+
+/* ======================= COURSE LISTING ======================= */
+let listingFilters = {category:'all', level:'all', price:'all', q:''};
+function viewCourses(){
+  const categories = [...new Set(DB.courses.map(c=>c.category))];
+  return \`
+  <div class="page-head"><div class="container">
+    <div class="breadcrumb"><a href="#/home">Home</a> / Courses</div>
+    <h1 style="font-size:2rem;">Course catalog</h1>
+  </div></div>
+  <div class="container" style="padding:34px 0 80px;">
+    <div class="filter-bar">
+      <input type="text" id="fSearch" placeholder="Search courses..." style="flex:1;min-width:180px;">
+      <select id="fCategory"><option value="all">All categories</option>\${categories.map(c=>\`<option value="\${c}">\${c}</option>\`).join('')}</select>
+    </div>
+    <div id="courseGrid" class="grid-3"></div>
+  </div>\`;
+}
+function renderCourseGrid(){
+  let list = DB.courses.filter(c=>{
+    if(listingFilters.category!=='all' && c.category!==listingFilters.category) return false;
+    if(listingFilters.q && !c.title.toLowerCase().includes(listingFilters.q.toLowerCase())) return false;
+    return true;
+  });
+  const grid = document.getElementById('courseGrid');
+  grid.innerHTML = list.length ? list.map(courseCard).join('') : \`<div class="empty-state" style="grid-column:1/-1;">No courses match those filters.</div>\`;
+}
+function afterCourses(){
+  renderCourseGrid();
+  document.getElementById('fCategory').onchange = e=>{ listingFilters.category=e.target.value; renderCourseGrid(); };
+  document.getElementById('fSearch').oninput = e=>{ listingFilters.q=e.target.value; renderCourseGrid(); };
+}
+
+/* ======================= COURSE DETAIL ======================= */
+function getEnrollment(userId, courseId){ return DB.enrollments.find(e=>e.userId===userId && e.courseId===courseId); }
+function totalLessons(c){ return c.curriculum.reduce((n,m)=>n+m.lessons.length,0); }
+function courseCompleted(enr, c){
+  if(!enr) return false;
+  const total = totalLessons(c);
+  const lessonsDone = total>0 && enr.progress.completedLessonIds.length >= total;
+  const quizDone = !c.quiz || (enr.quizResult && enr.quizResult.passed);
+  return lessonsDone && quizDone;
+}
+
+function viewCourseDetail(id){
+  const c = DB.courses.find(x=>x.id===id);
+  if(!c) return \`<div class="container" style="padding:80px 0;">Course not found.</div>\`;
+  const u = currentUser();
+  const enr = u ? getEnrollment(u.id,c.id) : null;
+  const lessonsCount = totalLessons(c);
+  return \`
+  <div class="page-head"><div class="container">
+    <div class="breadcrumb"><a href="#/home">Home</a> / <a href="#/courses">Courses</a> / \${c.category}</div>
+    <h1 style="font-size:2.1rem;max-width:26ch;">\${c.title}</h1>
+    <p style="color:var(--ink-300);max-width:60ch;">\${c.summary}</p>
+  </div></div>
+  <div class="container detail-grid">
+    <div>
+      <h3>Curriculum</h3>
+      \${c.curriculum.map(m=>\`
+        <div class="curriculum-item">
+          <div class="curriculum-head"><span>\${m.title}</span><span style="color:var(--ink-500);font-weight:400;font-size:.8rem;">\${m.lessons.length} lessons</span></div>
+          \${m.lessons.map(l=>\`<div class="lesson-row"><span class="l-left">\${l.type==='video'?'▶':'📄'} \${l.title}</span></div>\`).join('')}
+        </div>\`).join('')}
+    </div>
+    <div>
+      <div class="sticky-card">
+        <div class="course-thumb" style="background:\${c.color};border-radius:8px;margin:-24px -24px 18px;height:140px;"></div>
+        <div class="big-price">\${c.price===0?'Free':'৳'+c.price.toLocaleString()}</div>
+        \${enr ? \`
+          <div class="progress-label"><span>Your progress</span><span>\${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%</span></div>
+          <div class="progress-ribbon" style="margin-bottom:16px;"><i style="width:\${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%"></i></div>
+          \${courseCompleted(enr,c) ? \`<a href="#/certificate/\${c.id}" class="btn btn-primary btn-block">🎓 View certificate</a>\` : \`<a href="#/dashboard/student/learn/\${c.id}" class="btn btn-primary btn-block">Continue learning</a>\`}
+        \` : \`
+          <button class="btn btn-primary btn-block" id="enrollBtn">\${c.price===0?'Enroll for free':'Enroll now'}</button>
+        \`}
+      </div>
+    </div>
+  </div>\`;
+}
+function afterCourseDetail(id){
+  const btn = document.getElementById('enrollBtn');
+  if(!btn) return;
+  btn.onclick = ()=>{
+    const u = currentUser();
+    if(!u){ toast('Please log in to enroll.'); location.hash='#/login'; return; }
+    if(u.role!=='student'){ toast('Log in as a student to enroll.'); return; }
+    const c = DB.courses.find(x=>x.id===id);
+    if(c.price===0){
+      enrollUser(u.id, c.id, {method:'free', amount:0});
+      toast('Enrolled! Opening your course...');
+      setTimeout(()=>location.hash=\`#/dashboard/student/learn/\${c.id}\`, 500);
+    } else {
+      location.hash = \`#/checkout/\${id}\`;
+    }
+  };
+}
+function enrollUser(userId, courseId, paymentInfo){
+  const payment = {id:uid('pay'), userId, courseId, method:paymentInfo.method, amount:paymentInfo.amount, status:'paid', date:new Date().toISOString()};
+  DB.payments.push(payment);
+  DB.enrollments.push({id:uid('enr'), userId, courseId, progress:{completedLessonIds:[]}, quizResult:null, enrolledAt:new Date().toISOString(), paymentId:payment.id});
+  saveDB(DB);
+}
+
+/* ======================= AUTH ======================= */
+function viewAuth(mode){
+  const isLogin = mode==='login';
+  return \`
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="eyebrow">\${isLogin?'Welcome back':'Create account'}</div>
+      <h2 style="margin-bottom:20px;">\${isLogin?'Log in to Verhal':'Join Verhal'}</h2>
+      <div class="demo-note">Demo credentials — student: <b>student@verhal.edu / learn123</b> · instructor: <b>rafiq@verhal.edu / teach123</b></div>
+      \${!isLogin ? \`
+      <div class="role-toggle">
+        <button type="button" data-role="student" class="active">I'm a student</button>
+        <button type="button" data-role="instructor">I'm an instructor</button>
+      </div>\` : ''}
+      <form id="authForm">
+        \${!isLogin ? \`<div class="field"><label>Full name</label><input type="text" id="fName" placeholder="Your name"></div>\` : ''}
+        <div class="field"><label>Email</label><input type="email" id="fEmail" placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="fPass" placeholder="••••••••"></div>
+        <button type="submit" class="btn btn-primary btn-block">\${isLogin?'Log in':'Create account'}</button>
+      </form>
+    </div>
+  </div>\`;
+}
+let selectedRole='student';
+function afterAuth(mode){
+  selectedRole='student';
+  const roleBtns = document.querySelectorAll('.role-toggle button');
+  roleBtns.forEach(b=>b.onclick=()=>{ roleBtns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); selectedRole=b.dataset.role; });
+  document.getElementById('authForm').onsubmit = (e)=>{
+    e.preventDefault();
+    const email = document.getElementById('fEmail').value.trim();
+    const pass = document.getElementById('fPass').value;
+    if(!email || !pass){ toast('Please fill in all fields.'); return; }
+    if(mode==='login'){
+      const u = DB.users.find(x=>x.email.toLowerCase()===email.toLowerCase() && x.password===pass);
+      if(!u){ toast('Incorrect email or password.'); return; }
+      setSession(u.id); toast('Welcome back!');
+      location.hash = u.role==='instructor' ? '#/dashboard/instructor' : '#/dashboard/student';
+    } else {
+      const name = document.getElementById('fName').value.trim();
+      const u = {id:uid('u'), name, email, password:pass, role:selectedRole, joined:new Date().toISOString().slice(0,10)};
+      DB.users.push(u); saveDB(DB); setSession(u.id);
+      toast('Account created.');
+      location.hash = selectedRole==='instructor' ? '#/dashboard/instructor' : '#/dashboard/student';
+    }
+    route();
+  };
+}
+
+/* ======================= DASHBOARDS ======================= */
+function viewDashboardGate(role){
+  const u = currentUser();
+  if(!u){ setTimeout(()=>location.hash='#/login',0); return ''; }
+  return \`<div class="container" style="padding:40px 0;"><h2 style="margin-bottom:20px;">\${u.name}'s Dashboard (\${u.role})</h2>
+    <div class="grid-3">\${u.role==='student'?studentWidgets():instructorWidgets()}</div>
+  </div>\`;
+}
+function studentWidgets(){
+  const u = currentUser();
+  const myEnrs = DB.enrollments.filter(e=>e.userId===u.id);
+  return myEnrs.map(e=>{
+    const c = DB.courses.find(x=>x.id===e.courseId);
+    return \`
+    <div class="stat-card">
+      <b style="font-size:1.1rem;color:var(--ink-50);">\${c.title}</b>
+      <span style="display:block;margin:8px 0 16px;">\${e.progress.completedLessonIds.length} lessons done</span>
+      <a href="#/lesson/\${c.id}/\${c.curriculum[0].lessons[0].id}" class="btn btn-primary btn-sm">Resume course</a>
+    </div>\`;
+  }).join('') || '<div class="stat-card">No courses enrolled. <a href="#/courses">Browse courses</a></div>';
+}
+function instructorWidgets(){
+  const u = currentUser();
+  const myCourses = DB.courses.filter(c=>c.instructorId===u.id);
+  return myCourses.map(c=>\`
+    <div class="stat-card">
+      <b style="font-size:1.1rem;color:var(--ink-50);">\${c.title}</b>
+      <span style="display:block;margin:8px 0 16px;">Price: ৳\${c.price}</span>
+      <a href="#/course/\${c.id}" class="btn btn-primary btn-sm">View course</a>
+    </div>\`).join('') || '<div class="stat-card">No courses published yet.</div>';
+}
+function afterDashboard(role, sub){}
+
+/* ======================= CHECKOUT / LESSON / QUIZ / CERT ======================= */
+function viewCheckout(id){ return \`<div class="container" style="padding:40px 0;"><h3>Checkout for \${id}</h3><button class="btn btn-primary" onclick="enrollUser('\${currentUser().id}', '\${id}', {method:'mock',amount:100});location.hash='#/dashboard/student';location.reload();">Confirm Payment</button></div>\`; }
+function afterCheckout(){}
+function viewLesson(cid, lid){
+  const c = DB.courses.find(x=>x.id===cid);
+  const l = c.curriculum.flatMap(m=>m.lessons).find(x=>x.id===lid);
+  return \`
+  <div class="container" style="padding:40px 0;">
+    <div class="breadcrumb"><a href="#/dashboard/student">Dashboard</a> / Lesson</div>
+    <h2>\${l.title}</h2>
+    <div class="lesson-player" style="margin:20px 0;height:400px;border-radius:8px;">\${l.type==='video'?'▶ Video':'📄 Document'}</div>
+    \${l.content ? \`<p>\${l.content}</p>\` : ''}
+    <button class="btn btn-primary" onclick="
+      const e = getEnrollment('\${currentUser().id}', '\${cid}');
+      if(!e.progress.completedLessonIds.includes('\${lid}')) { e.progress.completedLessonIds.push('\${lid}'); saveDB(DB); alert('Lesson complete!'); }
+    ">Mark as Complete</button>
+  </div>\`;
+}
+function afterLesson(){}
+function viewQuiz(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Quiz Placeholder</h2></div>\`; }
+function afterQuiz(){}
+function viewCertificate(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Certificate Placeholder</h2></div>\`; }
+function afterCertificate(){}
+function viewCourseEditor(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Editor Placeholder</h2></div>\`; }
+function afterCourseEditor(){}
+
+/* ======================= THEME + NAV TOGGLES ======================= */
+document.getElementById('themeBtn').onclick = ()=>{
+  const body = document.body;
+  const next = body.dataset.theme==='dark' ? 'light' : 'dark';
+  body.dataset.theme = next;
+  localStorage.setItem('verhal_theme', next);
+};
+(function initTheme(){
+  const saved = localStorage.getItem('verhal_theme');
+  if(saved) document.body.dataset.theme = saved;
+})();
+document.getElementById('mobileToggle').onclick = ()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+};
+
+/* init */
+route();
+</script>
+</body>
+</html>
