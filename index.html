@@ -295,7 +295,7 @@ table td{padding:12px;border-bottom:1px solid var(--navy-700);color:var(--ink-30
 /* Checkout */
 .checkout-steps{display:flex;gap:0;margin-bottom:36px;max-width:520px;}
 .co-step{flex:1;text-align:center;font-size:.76rem;color:var(--ink-500);font-family:var(--font-mono);position:relative;padding-bottom:14px;}
-.co-step::after{content:"absolute;bottom:0;left:0;right:0;height:2px;background:var(--navy-700);}
+.co-step::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--navy-700);}
 .co-step.active{color:var(--gold-500);}
 .co-step.active::after, .co-step.done::after{background:var(--gold-500);}
 .pay-method{display:flex;align-items:center;gap:14px;padding:16px;border:1.5px solid var(--navy-700);border-radius:8px;margin-bottom:12px;cursor:pointer;}
@@ -428,6 +428,85 @@ function seedDB(){
       quiz:{id:'q3',title:'Marketing Basics Check',passScore:60,questions:[
         {id:'qq1',text:'What should you define before running ads?',options:['Logo color','Success metric','Font size','Domain name'],correctIndex:1}
       ]}
+    },
+    {
+      id:'c4', title:'Spoken English for Professionals', category:'Language', level:'Beginner',
+      price:1200, instructorId:instructor2, instructorName:'Nusrat Jahan', color:'linear-gradient(135deg,#2a4a3f,#1b2540)',
+      summary:'Practical speaking drills for meetings, interviews, and everyday workplace conversation.',
+      rating:4.9, reviews:[{name:'Shuvo.',text:'My interview confidence improved a lot.',rating:5}],
+      curriculum:[
+        {id:'m1',title:'Everyday Conversation', lessons:[
+          {id:'l1',title:'Introducing yourself with confidence',type:'video',duration:'6:15'},
+          {id:'l2',title:'Small talk that actually works',type:'video',duration:'8:02'}
+        ]}
+      ],
+      quiz:{id:'q4',title:'Conversation Check',passScore:60,questions:[
+        {id:'qq1',text:'Small talk is mainly useful for:',options:['Filling silence only','Building rapport','Avoiding work','Testing grammar'],correctIndex:1}
+      ]}
+    },
+    {
+      id:'c5', title:'Cloud Fundamentals: Servers, Storage & Networking', category:'IT & Software', level:'Intermediate',
+      price:3200, instructorId, instructorName:'Rafiq Ahmed', color:'linear-gradient(135deg,#2b3f4a,#1b2540)',
+      summary:'Understand the building blocks behind every modern app before you touch a specific cloud provider.',
+      rating:4.7, reviews:[],
+      curriculum:[
+        {id:'m1',title:'Core Concepts', lessons:[
+          {id:'l1',title:'What is a virtual machine?',type:'video',duration:'11:00'},
+          {id:'l2',title:'Object storage vs block storage',type:'text',content:'Object storage is ideal for files you rarely modify — images, backups, logs. Block storage behaves like a hard drive attached to a single server.'}
+        ]}
+      ],
+      quiz:{id:'q5',title:'Cloud Basics Check',passScore:70,questions:[
+        {id:'qq1',text:'Object storage is best suited for:',options:['Rapidly changing databases','Rarely modified files','Live video calls','RAM caching'],correctIndex:1}
+      ]}
+    },
+    {
+      id:'c6', title:'Starting a Small Business in Bangladesh', category:'Business', level:'Beginner',
+      price:1500, instructorId:instructor2, instructorName:'Nusrat Jahan', color:'linear-gradient(135deg,#4a2b2b,#1b2540)',
+      summary:'Registration, basic bookkeeping, and pricing your first product or service.',
+      rating:4.5, reviews:[{name:'Imran.',text:'Very grounded, no fluff.',rating:4,reviewerId:null}],
+      curriculum:[
+        {id:'m1',title:'Before You Launch', lessons:[
+          {id:'l1',title:'Choosing a business structure',type:'text',content:'A sole proprietorship is the fastest way to start, but a registered partnership or company may protect you better as you grow.'},
+          {id:'l2',title:'Pricing your first product',type:'video',duration:'9:10'}
+        ]}
+      ],
+      quiz:{id:'q6',title:'Business Basics Check',passScore:60,questions:[
+        {id:'qq1',text:'The fastest structure to start with is usually:',options:['Public company','Sole proprietorship','Franchise','Cooperative'],correctIndex:1}
+      ]}
+    },
+    {
+      id:'c7', title:'Data Analysis with Spreadsheets', category:'IT & Software', level:'Beginner',
+      price:1600, instructorId, instructorName:'Rafiq Ahmed', color:'linear-gradient(135deg,#2b4a3a,#1b2540)',
+      summary:'Clean, sort, and summarize real datasets using formulas, pivot tables, and charts — no coding required.',
+      rating:4.6, reviews:[{name:'Sabrina.',text:'Pivot tables finally make sense to me.',rating:5,reviewerId:null}],
+      curriculum:[
+        {id:'m1',title:'Working with Raw Data', lessons:[
+          {id:'l1',title:'Cleaning messy spreadsheets',type:'video',duration:'10:40'},
+          {id:'l2',title:'Formulas you will actually use',type:'text',content:'SUMIFS, VLOOKUP, and IFERROR cover most day-to-day reporting needs. We will rebuild a monthly sales summary using only these three.'}
+        ]},
+        {id:'m2',title:'Summarizing & Presenting', lessons:[
+          {id:'l3',title:'Building your first pivot table',type:'video',duration:'13:15'}
+        ]}
+      ],
+      quiz:{id:'q7',title:'Spreadsheet Basics Check',passScore:60,questions:[
+        {id:'qq1',text:'A pivot table is mainly used to:',options:['Store raw data','Summarize and group data','Send emails','Create slideshows'],correctIndex:1},
+        {id:'qq2',text:'VLOOKUP is used to:',options:['Sort columns','Look up a value in a table','Delete duplicates','Format cells'],correctIndex:1}
+      ]}
+    },
+    {
+      id:'c8', title:'Photography Basics for Beginners', category:'Design', level:'Beginner',
+      price:1400, instructorId:instructor2, instructorName:'Nusrat Jahan', color:'linear-gradient(135deg,#3a3a2b,#1b2540)',
+      summary:'Understand exposure, composition, and light using any camera you already own — including your phone.',
+      rating:4.7, reviews:[],
+      curriculum:[
+        {id:'m1',title:'Seeing the Shot', lessons:[
+          {id:'l1',title:'Exposure triangle explained',type:'video',duration:'11:20'},
+          {id:'l2',title:'Composition rules worth breaking',type:'text',content:'The rule of thirds is a starting point, not a law. We will look at three strong photos that ignore it deliberately and explain why they still work.'}
+        ]}
+      ],
+      quiz:{id:'q8',title:'Photography Basics Check',passScore:60,questions:[
+        {id:'qq1',text:'The exposure triangle consists of aperture, shutter speed, and:',options:['Focus','ISO','White balance','Zoom'],correctIndex:1}
+      ]}
     }
   ];
   return {users, courses, enrollments:[], payments:[]};
@@ -482,15 +561,15 @@ function renderNav(view){
   const u = currentUser();
   const authArea = document.getElementById('authArea');
   if(u){
-    authArea.innerHTML = \`<a href="#/dashboard/\${u.role}" class="avatar-chip"><span class="dot">\${u.name.charAt(0)}</span><span>\${u.name.split(' ')[0]}</span></a>
-      <button class="btn btn-ghost btn-sm" id="logoutBtn" style="margin-left:8px">Log out</button>\`;
+    authArea.innerHTML = `<a href="#/dashboard/${u.role}" class="avatar-chip"><span class="dot">${u.name.charAt(0)}</span><span>${u.name.split(' ')[0]}</span></a>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn" style="margin-left:8px">Log out</button>`;
     document.getElementById('logoutBtn').onclick=()=>{ clearSession(); toast('Logged out.'); location.hash='#/home'; };
     const studentLink = document.querySelector('[data-nav="student"]');
     const instLink = document.querySelector('[data-nav="instructor"]');
     if(studentLink) studentLink.style.display = u.role==='student' ? '' : 'none';
     if(instLink) instLink.style.display = u.role==='instructor' ? '' : 'none';
   } else {
-    authArea.innerHTML = \`<a href="#/login" class="btn btn-ghost btn-sm">Log in</a><a href="#/register" class="btn btn-primary btn-sm">Sign up</a>\`;
+    authArea.innerHTML = `<a href="#/login" class="btn btn-ghost btn-sm">Log in</a><a href="#/register" class="btn btn-primary btn-sm">Sign up</a>`;
     const studentLink = document.querySelector('[data-nav="student"]');
     const instLink = document.querySelector('[data-nav="instructor"]');
     if(studentLink) studentLink.style.display = 'none';
@@ -506,75 +585,118 @@ function stars(n){ const full=Math.round(n); return '★★★★★☆☆☆☆
 
 function viewHome(){
   const featured = DB.courses.slice(0,3);
-  return \`
+  const testimonials = [
+    {name:'Mim Akter', role:'Frontend student', text:'I finally understand how a page fits together instead of copy-pasting snippets and hoping for the best.'},
+    {name:'Rakib Chowdhury', role:'Design student', text:'The spacing and hierarchy lesson alone was worth the course price.'},
+    {name:'Farhana Islam', role:'Marketing student', text:'Practical, no-fluff lessons I could apply the same afternoon.'}
+  ];
+  return `
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">Learning platform</div>
         <h1>Study on your own schedule, <em>graduate on your own terms.</em></h1>
-        <p class="lead">Verhal brings courses, quizzes, and progress tracking into one calm, distraction-free place.</p>
+        <p class="lead">Verhal brings courses, quizzes, and progress tracking into one calm, distraction-free place — built for learners across Bangladesh.</p>
         <div class="hero-ctas">
           <a href="#/courses" class="btn btn-primary">Browse courses</a>
           <a href="#/register" class="btn btn-outline">Become an instructor</a>
         </div>
+        <div class="hero-stats">
+          <div><b>${DB.courses.length}</b><span>Active courses</span></div>
+          <div><b>${DB.users.filter(u=>u.role==='instructor').length}</b><span>Instructors</span></div>
+          <div><b>${DB.enrollments.length}</b><span>Enrollments</span></div>
+        </div>
+      </div>
+      <div class="card-deck">
+        <div class="deck-card deck-1"><div class="ribbon"></div><h4>${featured[0].title}</h4><p>${featured[0].category}</p><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="deck-card deck-2"><div class="ribbon"></div><h4>${featured[1].title}</h4><p>${featured[1].category}</p><div class="bar"><i style="width:40%"></i></div></div>
+        <div class="deck-card deck-3"><div class="ribbon"></div><h4>${featured[2].title}</h4><p>${featured[2].category}</p><div class="bar"><i style="width:90%"></i></div></div>
       </div>
     </div>
   </section>
+
   <section class="block">
     <div class="container">
       <div class="section-head">
         <div><div class="eyebrow">Catalog</div><h2>Featured courses</h2></div>
         <a href="#/courses" class="btn btn-outline btn-sm">View all courses</a>
       </div>
-      <div class="grid-3">\${featured.map(courseCard).join('')}</div>
+      <div class="grid-3">${featured.map(courseCard).join('')}</div>
     </div>
   </section>
-  \`;
+
+  <section class="block" style="background:var(--navy-950);border-top:1px solid var(--navy-700);border-bottom:1px solid var(--navy-700);">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Testimonials</div><h2>What learners are saying</h2></div></div>
+      <div class="grid-3">
+        ${testimonials.map(t=>`<div class="testi-card"><p>"${t.text}"</p><div class="testi-who"><div class="dot">${t.name.charAt(0)}</div><div><b>${t.name}</b><small>${t.role}</small></div></div></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container" style="text-align:center;">
+      <h2 style="max-width:24ch;margin:0 auto 16px;">Ready to start your next chapter?</h2>
+      <p style="color:var(--ink-300);max-width:44ch;margin:0 auto 26px;">Join as a student to start learning today, or as an instructor to publish your own course.</p>
+      <div class="hero-ctas" style="justify-content:center;">
+        <a href="#/register" class="btn btn-primary">Create a free account</a>
+      </div>
+    </div>
+  </section>
+  `;
 }
 function afterHome(){}
 
 function courseCard(c){
-  const priceHtml = c.price===0 ? \`<span class="price free">Free</span>\` : \`<span class="price">৳\${c.price.toLocaleString()}</span>\`;
-  return \`
-  <a href="#/course/\${c.id}" class="course-card">
-    <div class="course-thumb" style="background:\${c.color}"><span class="cat">\${c.category}</span></div>
+  const priceHtml = c.price===0 ? `<span class="price free">Free</span>` : `<span class="price">৳${c.price.toLocaleString()}</span>`;
+  return `
+  <a href="#/course/${c.id}" class="course-card">
+    <div class="course-thumb" style="background:${c.color}"><span class="cat">${c.category}</span></div>
     <div class="course-body">
-      <h4>\${c.title}</h4>
-      <div class="course-meta"><span>\${c.instructorName}</span><span class="stars">\${stars(c.rating)} \${c.rating}</span></div>
-      <div class="course-foot"><span class="badge">\${c.level}</span>\${priceHtml}</div>
+      <h4>${c.title}</h4>
+      <div class="course-meta"><span>${c.instructorName}</span><span class="stars">${stars(c.rating)} ${c.rating}</span></div>
+      <div class="course-foot"><span class="badge">${c.level}</span>${priceHtml}</div>
     </div>
-  </a>\`;
+  </a>`;
 }
 
 /* ======================= COURSE LISTING ======================= */
 let listingFilters = {category:'all', level:'all', price:'all', q:''};
 function viewCourses(){
   const categories = [...new Set(DB.courses.map(c=>c.category))];
-  return \`
+  return `
   <div class="page-head"><div class="container">
     <div class="breadcrumb"><a href="#/home">Home</a> / Courses</div>
     <h1 style="font-size:2rem;">Course catalog</h1>
+    <p style="color:var(--ink-300)">Filter by category, level, or price to find the right course.</p>
   </div></div>
   <div class="container" style="padding:34px 0 80px;">
     <div class="filter-bar">
       <input type="text" id="fSearch" placeholder="Search courses..." style="flex:1;min-width:180px;">
-      <select id="fCategory"><option value="all">All categories</option>\${categories.map(c=>\`<option value="\${c}">\${c}</option>\`).join('')}</select>
+      <select id="fCategory"><option value="all">All categories</option>${categories.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
+      <select id="fLevel"><option value="all">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+      <select id="fPrice"><option value="all">Any price</option><option value="free">Free</option><option value="paid">Paid</option></select>
     </div>
     <div id="courseGrid" class="grid-3"></div>
-  </div>\`;
+  </div>`;
 }
 function renderCourseGrid(){
   let list = DB.courses.filter(c=>{
     if(listingFilters.category!=='all' && c.category!==listingFilters.category) return false;
+    if(listingFilters.level!=='all' && c.level!==listingFilters.level) return false;
+    if(listingFilters.price==='free' && c.price!==0) return false;
+    if(listingFilters.price==='paid' && c.price===0) return false;
     if(listingFilters.q && !c.title.toLowerCase().includes(listingFilters.q.toLowerCase())) return false;
     return true;
   });
   const grid = document.getElementById('courseGrid');
-  grid.innerHTML = list.length ? list.map(courseCard).join('') : \`<div class="empty-state" style="grid-column:1/-1;">No courses match those filters.</div>\`;
+  grid.innerHTML = list.length ? list.map(courseCard).join('') : `<div class="empty-state" style="grid-column:1/-1;"><div class="glyph">🔍</div>No courses match those filters.</div>`;
 }
 function afterCourses(){
   renderCourseGrid();
   document.getElementById('fCategory').onchange = e=>{ listingFilters.category=e.target.value; renderCourseGrid(); };
+  document.getElementById('fLevel').onchange = e=>{ listingFilters.level=e.target.value; renderCourseGrid(); };
+  document.getElementById('fPrice').onchange = e=>{ listingFilters.price=e.target.value; renderCourseGrid(); };
   document.getElementById('fSearch').oninput = e=>{ listingFilters.q=e.target.value; renderCourseGrid(); };
 }
 
@@ -588,44 +710,90 @@ function courseCompleted(enr, c){
   const quizDone = !c.quiz || (enr.quizResult && enr.quizResult.passed);
   return lessonsDone && quizDone;
 }
+function recalcRating(c){
+  if(!c.reviews.length){ c.rating = 0; return; }
+  const sum = c.reviews.reduce((s,r)=>s+r.rating,0);
+  c.rating = Math.round((sum/c.reviews.length)*10)/10;
+}
 
 function viewCourseDetail(id){
   const c = DB.courses.find(x=>x.id===id);
-  if(!c) return \`<div class="container" style="padding:80px 0;">Course not found.</div>\`;
+  if(!c) return `<div class="container" style="padding:80px 0;">Course not found. <a href="#/courses">Back to courses</a></div>`;
   const u = currentUser();
   const enr = u ? getEnrollment(u.id,c.id) : null;
   const lessonsCount = totalLessons(c);
-  return \`
+  return `
   <div class="page-head"><div class="container">
-    <div class="breadcrumb"><a href="#/home">Home</a> / <a href="#/courses">Courses</a> / \${c.category}</div>
-    <h1 style="font-size:2.1rem;max-width:26ch;">\${c.title}</h1>
-    <p style="color:var(--ink-300);max-width:60ch;">\${c.summary}</p>
+    <div class="breadcrumb"><a href="#/home">Home</a> / <a href="#/courses">Courses</a> / ${c.category}</div>
+    <div class="eyebrow">${c.category} · ${c.level}</div>
+    <h1 style="font-size:2.1rem;max-width:26ch;">${c.title}</h1>
+    <p style="color:var(--ink-300);max-width:60ch;">${c.summary}</p>
+    <div class="course-meta" style="max-width:300px;"><span class="stars">${stars(c.rating)} ${c.rating} (${c.reviews.length} reviews)</span></div>
   </div></div>
   <div class="container detail-grid">
     <div>
       <h3>Curriculum</h3>
-      \${c.curriculum.map(m=>\`
+      <p style="color:var(--ink-500);font-size:.85rem;margin-top:-8px;">${c.curriculum.length} modules · ${lessonsCount} lessons</p>
+      ${c.curriculum.map(m=>`
         <div class="curriculum-item">
-          <div class="curriculum-head"><span>\${m.title}</span><span style="color:var(--ink-500);font-weight:400;font-size:.8rem;">\${m.lessons.length} lessons</span></div>
-          \${m.lessons.map(l=>\`<div class="lesson-row"><span class="l-left">\${l.type==='video'?'▶':'📄'} \${l.title}</span></div>\`).join('')}
-        </div>\`).join('')}
+          <div class="curriculum-head"><span>${m.title}</span><span style="color:var(--ink-500);font-weight:400;font-size:.8rem;">${m.lessons.length} lessons</span></div>
+          ${m.lessons.map(l=>`<div class="lesson-row"><span class="l-left">${l.type==='video'?'▶':'📄'} ${l.title}</span><span>${l.duration||''}</span></div>`).join('')}
+        </div>`).join('')}
+
+      <h3 style="margin-top:36px;">Instructor</h3>
+      <div class="instructor-strip">
+        <div class="dot" style="width:44px;height:44px;border-radius:99px;background:var(--navy-700);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);color:var(--gold-500);font-weight:700;">${c.instructorName.charAt(0)}</div>
+        <div><b>${c.instructorName}</b><br><small style="color:var(--ink-500);">Instructor at Verhal</small></div>
+      </div>
+
+      <h3 style="margin-top:36px;">Reviews</h3>
+      <div id="reviewList">${c.reviews.length ? c.reviews.map(r=>`<div class="testi-card" style="margin-bottom:12px;"><div class="stars">${stars(r.rating)}</div><p>"${r.text}"</p><small style="color:var(--ink-500);">— ${r.name}</small></div>`).join('') : `<p style="color:var(--ink-500);">No reviews yet.</p>`}</div>
+      ${(u && u.role==='student' && enr && !c.reviews.some(r=>r.reviewerId===u.id)) ? `
+      <div class="auth-card" style="margin-top:18px;padding:20px;">
+        <b style="font-size:.9rem;">Leave a review</b>
+        <div class="field" style="margin-top:12px;"><label>Rating</label>
+          <select id="revRating"><option value="5">★★★★★ Excellent</option><option value="4">★★★★☆ Good</option><option value="3">★★★☆☆ Okay</option><option value="2">★★☆☆☆ Below expectations</option><option value="1">★☆☆☆☆ Poor</option></select>
+        </div>
+        <div class="field"><label>Your review</label><textarea id="revText" rows="3" placeholder="What did you think of this course?"></textarea></div>
+        <button class="btn btn-primary btn-sm" id="submitReviewBtn">Submit review</button>
+      </div>` : ''}
     </div>
     <div>
       <div class="sticky-card">
-        <div class="course-thumb" style="background:\${c.color};border-radius:8px;margin:-24px -24px 18px;height:140px;"></div>
-        <div class="big-price">\${c.price===0?'Free':'৳'+c.price.toLocaleString()}</div>
-        \${enr ? \`
-          <div class="progress-label"><span>Your progress</span><span>\${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%</span></div>
-          <div class="progress-ribbon" style="margin-bottom:16px;"><i style="width:\${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%"></i></div>
-          \${courseCompleted(enr,c) ? \`<a href="#/certificate/\${c.id}" class="btn btn-primary btn-block">🎓 View certificate</a>\` : \`<a href="#/dashboard/student/learn/\${c.id}" class="btn btn-primary btn-block">Continue learning</a>\`}
-        \` : \`
-          <button class="btn btn-primary btn-block" id="enrollBtn">\${c.price===0?'Enroll for free':'Enroll now'}</button>
-        \`}
+        <div class="course-thumb" style="background:${c.color};border-radius:8px;margin:-24px -24px 18px;height:140px;"></div>
+        <div class="big-price">${c.price===0?'Free':'৳'+c.price.toLocaleString()}</div>
+        ${enr ? `
+          <div class="progress-label"><span>Your progress</span><span>${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%</span></div>
+          <div class="progress-ribbon" style="margin-bottom:16px;"><i style="width:${Math.round((enr.progress.completedLessonIds.length/lessonsCount)*100)}%"></i></div>
+          ${courseCompleted(enr,c) ? `<a href="#/certificate/${c.id}" class="btn btn-primary btn-block">🎓 View certificate</a>` : `<a href="#/dashboard/student/learn/${c.id}" class="btn btn-primary btn-block">Continue learning</a>`}
+        ` : `
+          <button class="btn btn-primary btn-block" id="enrollBtn">${c.price===0?'Enroll for free':'Enroll now'}</button>
+        `}
+        <div class="trust-row">
+          <span>🔒 Secure checkout</span>
+          <span>♾️ Lifetime access</span>
+          <span>📱 Mobile friendly</span>
+        </div>
       </div>
     </div>
-  </div>\`;
+  </div>`;
 }
 function afterCourseDetail(id){
+  const reviewBtn = document.getElementById('submitReviewBtn');
+  if(reviewBtn){
+    reviewBtn.onclick = ()=>{
+      const u = currentUser();
+      const c = DB.courses.find(x=>x.id===id);
+      const rating = parseInt(document.getElementById('revRating').value);
+      const text = document.getElementById('revText').value.trim();
+      if(!text){ toast('Please write a short review.'); return; }
+      c.reviews.push({name:u.name, text, rating, reviewerId:u.id});
+      recalcRating(c);
+      saveDB(DB);
+      toast('Review submitted. Thank you!');
+      route();
+    };
+  }
   const btn = document.getElementById('enrollBtn');
   if(!btn) return;
   btn.onclick = ()=>{
@@ -636,9 +804,9 @@ function afterCourseDetail(id){
     if(c.price===0){
       enrollUser(u.id, c.id, {method:'free', amount:0});
       toast('Enrolled! Opening your course...');
-      setTimeout(()=>location.hash=\`#/dashboard/student/learn/\${c.id}\`, 500);
+      setTimeout(()=>location.hash=`#/dashboard/student/learn/${c.id}`, 500);
     } else {
-      location.hash = \`#/checkout/\${id}\`;
+      location.hash = `#/checkout/${id}`;
     }
   };
 }
@@ -652,28 +820,53 @@ function enrollUser(userId, courseId, paymentInfo){
 /* ======================= AUTH ======================= */
 function viewAuth(mode){
   const isLogin = mode==='login';
-  return \`
+  return `
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="eyebrow">\${isLogin?'Welcome back':'Create account'}</div>
-      <h2 style="margin-bottom:20px;">\${isLogin?'Log in to Verhal':'Join Verhal'}</h2>
+      <div class="eyebrow">${isLogin?'Welcome back':'Create account'}</div>
+      <h2 style="margin-bottom:20px;">${isLogin?'Log in to Verhal':'Join Verhal'}</h2>
       <div class="demo-note">Demo credentials — student: <b>student@verhal.edu / learn123</b> · instructor: <b>rafiq@verhal.edu / teach123</b></div>
-      \${!isLogin ? \`
+      ${!isLogin ? `
       <div class="role-toggle">
         <button type="button" data-role="student" class="active">I'm a student</button>
         <button type="button" data-role="instructor">I'm an instructor</button>
-      </div>\` : ''}
+      </div>` : ''}
       <form id="authForm">
-        \${!isLogin ? \`<div class="field"><label>Full name</label><input type="text" id="fName" placeholder="Your name"></div>\` : ''}
+        ${!isLogin ? `<div class="field"><label>Full name</label><input type="text" id="fName" placeholder="Your name"></div>` : ''}
         <div class="field"><label>Email</label><input type="email" id="fEmail" placeholder="you@example.com"></div>
         <div class="field"><label>Password</label><input type="password" id="fPass" placeholder="••••••••"></div>
-        <button type="submit" class="btn btn-primary btn-block">\${isLogin?'Log in':'Create account'}</button>
+        <button type="submit" class="btn btn-primary btn-block">${isLogin?'Log in':'Create account'}</button>
       </form>
+      ${isLogin ? `<div class="auth-switch"><a href="#" id="forgotPassLink">Forgot your password?</a></div>` : ''}
+      <div class="auth-switch">${isLogin ? `New here? <a href="#/register">Create an account</a>` : `Already have an account? <a href="#/login">Log in</a>`}</div>
     </div>
-  </div>\`;
+  </div>`;
 }
 let selectedRole='student';
 function afterAuth(mode){
+  const forgotLink = document.getElementById('forgotPassLink');
+  if(forgotLink){
+    forgotLink.onclick = (e)=>{
+      e.preventDefault();
+      const overlay = document.createElement('div');
+      overlay.className='modal-overlay';
+      overlay.innerHTML = `<div class="modal-box" style="position:relative;max-width:400px;">
+        <button class="close-x" id="closeForgot">✕</button>
+        <h3>Reset your password</h3>
+        <div class="field"><label>Email address</label><input type="email" id="forgotEmail" placeholder="you@example.com"></div>
+        <button class="btn btn-primary btn-block" id="sendResetBtn">Send reset link</button>
+      </div>`;
+      document.body.appendChild(overlay);
+      overlay.querySelector('#closeForgot').onclick=()=>overlay.remove();
+      overlay.onclick=(ev)=>{ if(ev.target===overlay) overlay.remove(); };
+      overlay.querySelector('#sendResetBtn').onclick=()=>{
+        const email = overlay.querySelector('#forgotEmail').value.trim();
+        if(!email){ toast('Please enter your email.'); return; }
+        overlay.remove();
+        toast('If an account exists for '+email+', a reset link has been sent.');
+      };
+    };
+  }
   selectedRole='student';
   const roleBtns = document.querySelectorAll('.role-toggle button');
   roleBtns.forEach(b=>b.onclick=()=>{ roleBtns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); selectedRole=b.dataset.role; });
@@ -685,77 +878,674 @@ function afterAuth(mode){
     if(mode==='login'){
       const u = DB.users.find(x=>x.email.toLowerCase()===email.toLowerCase() && x.password===pass);
       if(!u){ toast('Incorrect email or password.'); return; }
-      setSession(u.id); toast('Welcome back!');
+      setSession(u.id); toast('Welcome back, '+u.name.split(' ')[0]+'!');
       location.hash = u.role==='instructor' ? '#/dashboard/instructor' : '#/dashboard/student';
     } else {
       const name = document.getElementById('fName').value.trim();
+      if(!name){ toast('Please enter your name.'); return; }
+      if(DB.users.some(x=>x.email.toLowerCase()===email.toLowerCase())){ toast('An account with that email already exists.'); return; }
       const u = {id:uid('u'), name, email, password:pass, role:selectedRole, joined:new Date().toISOString().slice(0,10)};
       DB.users.push(u); saveDB(DB); setSession(u.id);
-      toast('Account created.');
+      toast('Account created. Welcome, '+name.split(' ')[0]+'!');
       location.hash = selectedRole==='instructor' ? '#/dashboard/instructor' : '#/dashboard/student';
     }
     route();
   };
 }
 
-/* ======================= DASHBOARDS ======================= */
+/* ======================= CHECKOUT ======================= */
+let checkoutState = {step:1, method:null};
+function viewCheckout(courseId){
+  const u = currentUser();
+  if(!u){ setTimeout(()=>location.hash='#/login',0); return '<div class="container" style="padding:80px 0;"></div>'; }
+  const c = DB.courses.find(x=>x.id===courseId);
+  if(!c) return `<div class="container" style="padding:80px 0;">Course not found.</div>`;
+  checkoutState = {step:1, method:null};
+  return `
+  <div class="container" style="padding:50px 0 100px;max-width:640px;">
+    <div class="breadcrumb"><a href="#/course/${c.id}">${c.title}</a> / Checkout</div>
+    <div class="checkout-steps">
+      <div class="co-step active" id="step1Lbl">1. Summary</div>
+      <div class="co-step" id="step2Lbl">2. Payment</div>
+      <div class="co-step" id="step3Lbl">3. Confirm</div>
+    </div>
+    <div id="checkoutBody"></div>
+  </div>`;
+}
+function renderCheckoutStep(courseId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const body = document.getElementById('checkoutBody');
+  ['step1Lbl','step2Lbl','step3Lbl'].forEach((id,i)=>{
+    const el = document.getElementById(id);
+    el.classList.toggle('active', i+1===checkoutState.step);
+    el.classList.toggle('done', i+1<checkoutState.step);
+  });
+  if(checkoutState.step===1){
+    body.innerHTML = `
+    <div class="auth-card">
+      <h3>Order summary</h3>
+      <div class="enroll-row" style="border:none;padding:0;background:none;">
+        <div class="thumb" style="background:${c.color}"></div>
+        <div class="body"><h4>${c.title}</h4><small style="color:var(--ink-500)">By ${c.instructorName}</small></div>
+      </div>
+      <div style="margin-top:20px;">
+        <div class="summary-line"><span>Course price</span><span>৳${c.price.toLocaleString()}</span></div>
+        <div class="summary-line"><span>Platform fee</span><span>৳0</span></div>
+        <div class="summary-line total"><span>Total due</span><span>৳${c.price.toLocaleString()}</span></div>
+      </div>
+      <button class="btn btn-primary btn-block" style="margin-top:22px;" id="toStep2">Continue to payment</button>
+    </div>`;
+    document.getElementById('toStep2').onclick=()=>{ checkoutState.step=2; renderCheckoutStep(courseId); };
+  } else if(checkoutState.step===2){
+    const methods = [
+      {id:'bkash', name:'bKash', color:'#E2136E'},
+      {id:'nagad', name:'Nagad', color:'#F7941D'},
+      {id:'sslcommerz', name:'SSLCommerz', color:'#1F6FBB'},
+      {id:'card', name:'Credit / Debit Card', color:'#555'}
+    ];
+    body.innerHTML = `
+    <div class="auth-card">
+      <h3>Choose a payment method</h3>
+      ${methods.map(m=>`<div class="pay-method" data-m="${m.id}"><div class="logo" style="background:${m.color}">${m.name.slice(0,2).toUpperCase()}</div><div><b>${m.name}</b></div></div>`).join('')}
+      <button class="btn btn-primary btn-block" style="margin-top:14px;" id="toStep3" disabled>Pay ৳${c.price.toLocaleString()}</button>
+      <button class="btn btn-ghost btn-block" id="backStep1">Back</button>
+    </div>`;
+    document.querySelectorAll('.pay-method').forEach(el=>{
+      el.onclick=()=>{
+        document.querySelectorAll('.pay-method').forEach(x=>x.classList.remove('selected'));
+        el.classList.add('selected'); checkoutState.method = el.dataset.m;
+        document.getElementById('toStep3').disabled=false;
+      };
+    });
+    document.getElementById('backStep1').onclick=()=>{ checkoutState.step=1; renderCheckoutStep(courseId); };
+    document.getElementById('toStep3').onclick=()=>{
+      checkoutState.step=3; renderCheckoutStep(courseId);
+      setTimeout(()=>{
+        const u = currentUser();
+        enrollUser(u.id, c.id, {method:checkoutState.method, amount:c.price});
+        checkoutState.step=4; renderCheckoutStep(courseId);
+      }, 1200);
+    };
+  } else if(checkoutState.step===3){
+    body.innerHTML = `<div class="status-screen"><div class="status-icon warn" style="background:color-mix(in srgb, var(--gold-500) 20%, transparent);color:var(--gold-500);">⏳</div><h3>Processing your payment...</h3><p style="color:var(--ink-500);">Confirming with ${checkoutState.method}. This will just take a moment.</p></div>`;
+  } else {
+    body.innerHTML = `
+    <div class="status-screen">
+      <div class="status-icon success">✓</div>
+      <h3>Payment successful</h3>
+      <p style="color:var(--ink-300);">You're enrolled in <b>${c.title}</b>. A receipt has been added to your order history.</p>
+      <div class="hero-ctas" style="justify-content:center;margin-top:20px;">
+        <a href="#/dashboard/student/learn/${c.id}" class="btn btn-primary">Start learning</a>
+        <a href="#/dashboard/student/orders" class="btn btn-outline">View receipt</a>
+      </div>
+    </div>`;
+  }
+}
+function afterCheckout(courseId){
+  const u = currentUser();
+  if(!u) return;
+  renderCheckoutStep(courseId);
+}
+
+/* ======================= LESSON VIEWER ======================= */
+function viewLesson(courseId, lessonId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const u = currentUser();
+  if(!c || !u) return `<div class="container" style="padding:80px 0;">Not available.</div>`;
+  const enr = getEnrollment(u.id, c.id);
+  if(!enr) return `<div class="container" style="padding:80px 0;">You are not enrolled in this course. <a href="#/course/${c.id}">Go to course</a></div>`;
+  const allLessons = c.curriculum.flatMap(m=>m.lessons.map(l=>({...l, moduleTitle:m.title})));
+  const current = allLessons.find(l=>l.id===lessonId) || allLessons[0];
+  return `
+  <div class="container" style="padding:30px 0 80px;">
+    <div class="breadcrumb"><a href="#/dashboard/student/learn/${c.id}">${c.title}</a> / ${current.moduleTitle}</div>
+    <div class="lesson-shell">
+      <div>
+        <div class="lesson-player">${current.type==='video' ? '▶ Video lesson · '+ (current.duration||'') : '📄 Reading lesson'}</div>
+        <div class="lesson-content">
+          <h2>${current.title}</h2>
+          ${current.type==='text' ? `<p style="color:var(--ink-300);line-height:1.7;">${current.content}</p>` : `<p style="color:var(--ink-500);">Video content plays above. Duration: ${current.duration}.</p>`}
+          <div style="display:flex;justify-content:space-between;margin-top:26px;align-items:center;">
+            <span class="check-circ ${enr.progress.completedLessonIds.includes(current.id)?'done':''}" id="lessonCheck">${enr.progress.completedLessonIds.includes(current.id)?'✓':''}</span>
+            <button class="btn ${enr.progress.completedLessonIds.includes(current.id)?'btn-outline':'btn-primary'}" id="markCompleteBtn">${enr.progress.completedLessonIds.includes(current.id)?'Marked complete':'Mark as complete'}</button>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-sidebar">
+        <b style="font-size:.85rem;">Course content</b>
+        <div style="margin-top:10px;">
+        ${allLessons.map(l=>`
+          <div class="lesson-list-item ${l.id===current.id?'current':''}" data-goto="${l.id}">
+            <span class="check-circ ${enr.progress.completedLessonIds.includes(l.id)?'done':''}">${enr.progress.completedLessonIds.includes(l.id)?'✓':''}</span>
+            <span>${l.title}</span>
+          </div>`).join('')}
+        </div>
+        <button class="btn btn-outline btn-block" style="margin-top:16px;" id="goQuizBtn">Take module quiz</button>
+      </div>
+    </div>
+  </div>`;
+}
+function afterLesson(courseId, lessonId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const u = currentUser();
+  const enr = getEnrollment(u.id, c.id);
+  const allLessons = c.curriculum.flatMap(m=>m.lessons);
+  const current = allLessons.find(l=>l.id===lessonId) || allLessons[0];
+  document.getElementById('markCompleteBtn').onclick = ()=>{
+    if(!enr.progress.completedLessonIds.includes(current.id)){
+      enr.progress.completedLessonIds.push(current.id); saveDB(DB); toast('Lesson marked complete.'); route();
+    }
+  };
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.onclick = ()=> location.hash = `#/lesson/${courseId}/${el.dataset.goto}`;
+  });
+  document.getElementById('goQuizBtn').onclick = ()=> location.hash = `#/quiz/${courseId}`;
+}
+
+/* ======================= QUIZ ======================= */
+let quizState = {answers:{}, submitted:false, index:0};
+function viewQuiz(courseId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const u = currentUser();
+  if(!c || !u) return `<div class="container" style="padding:80px 0;">Not available.</div>`;
+  const enr = getEnrollment(u.id, c.id);
+  if(!enr) return `<div class="container" style="padding:80px 0;">You are not enrolled in this course.</div>`;
+  quizState = {answers:{}, submitted:false, index:0};
+  return `<div class="container" style="padding:50px 0 100px;">
+    <div class="breadcrumb"><a href="#/dashboard/student/learn/${c.id}">${c.title}</a> / Quiz</div>
+    <div id="quizArea"></div>
+  </div>`;
+}
+function renderQuiz(courseId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const q = c.quiz;
+  const area = document.getElementById('quizArea');
+  if(!quizState.submitted){
+    const item = q.questions[quizState.index];
+    area.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-progress">Question ${quizState.index+1} of ${q.questions.length}</div>
+      <h3>${q.title}</h3>
+      <p style="font-weight:600;margin-bottom:16px;">${item.text}</p>
+      ${item.options.map((opt,i)=>`<div class="opt-row ${quizState.answers[item.id]===i?'selected':''}" data-i="${i}"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span>${opt}</span></div>`).join('')}
+      <div style="display:flex;justify-content:space-between;margin-top:20px;">
+        <button class="btn btn-ghost" id="prevQ" ${quizState.index===0?'disabled':''}>Previous</button>
+        <button class="btn btn-primary" id="nextQ">${quizState.index===q.questions.length-1?'Submit quiz':'Next question'}</button>
+      </div>
+    </div>`;
+    document.querySelectorAll('.opt-row').forEach(el=>{
+      el.onclick=()=>{ quizState.answers[item.id]=parseInt(el.dataset.i); renderQuiz(courseId); };
+    });
+    document.getElementById('prevQ').onclick=()=>{ quizState.index--; renderQuiz(courseId); };
+    document.getElementById('nextQ').onclick=()=>{
+      if(quizState.answers[item.id]===undefined){ toast('Please select an answer.'); return; }
+      if(quizState.index < q.questions.length-1){ quizState.index++; renderQuiz(courseId); }
+      else{
+        let correct=0;
+        q.questions.forEach(qq=>{ if(quizState.answers[qq.id]===qq.correctIndex) correct++; });
+        const score = Math.round((correct/q.questions.length)*100);
+        const passed = score >= q.passScore;
+        const u = currentUser(); const enr = getEnrollment(u.id, c.id);
+        enr.quizResult = {score, passed, attempts:(enr.quizResult?enr.quizResult.attempts:0)+1, date:new Date().toISOString()};
+        saveDB(DB);
+        quizState.submitted = true; quizState.score=score; quizState.passed=passed; quizState.correct=correct;
+        renderQuiz(courseId);
+      }
+    };
+  } else {
+    area.innerHTML = `
+    <div class="quiz-card" style="text-align:center;">
+      <div class="quiz-result-ring ${quizState.passed?'pass':'fail'}">${quizState.score}%</div>
+      <h3>${quizState.passed?'Great work — you passed!':'Not quite — try again'}</h3>
+      <p style="color:var(--ink-500);">You answered ${quizState.correct} of ${q.questions.length} questions correctly. Passing score: ${q.passScore}%.</p>
+      <div style="text-align:left;margin-top:24px;">
+        ${q.questions.map((item,qi)=>{
+          const ua = quizState.answers[item.id];
+          return `<p style="font-weight:600;margin-bottom:8px;">${qi+1}. ${item.text}</p>` +
+            item.options.map((opt,i)=>{
+              let cls='opt-row';
+              if(i===item.correctIndex) cls+=' correct';
+              else if(i===ua) cls+=' incorrect';
+              return `<div class="${cls}"><span class="opt-letter">${String.fromCharCode(65+i)}</span><span>${opt}</span></div>`;
+            }).join('');
+        }).join('')}
+      </div>
+      <div class="hero-ctas" style="justify-content:center;margin-top:10px;">
+        <a href="#/dashboard/student/learn/${c.id}" class="btn btn-outline">Back to course</a>
+        ${!quizState.passed ? `<button class="btn btn-primary" id="retryQuiz">Retry quiz</button>` : ''}
+      </div>
+    </div>`;
+    const retry = document.getElementById('retryQuiz');
+    if(retry) retry.onclick=()=>{ quizState={answers:{}, submitted:false, index:0}; renderQuiz(courseId); };
+  }
+}
+function afterQuiz(courseId){ renderQuiz(courseId); }
+
+/* ======================= CERTIFICATE ======================= */
+function viewCertificate(courseId){
+  const u = currentUser();
+  const c = DB.courses.find(x=>x.id===courseId);
+  if(!u || !c) return `<div class="container" style="padding:80px 0;">Not available.</div>`;
+  const enr = getEnrollment(u.id, c.id);
+  if(!courseCompleted(enr, c)){
+    return `<div class="container" style="padding:80px 0;text-align:center;">
+      <div class="empty-state"><div class="glyph">🎓</div>Complete all lessons${c.quiz?' and pass the quiz':''} to unlock your certificate.<br>
+      <a href="#/dashboard/student/learn/${c.id}" class="btn btn-primary btn-sm" style="margin-top:14px;">Back to course</a></div>
+    </div>`;
+  }
+  const certId = ('VRH-'+c.id+'-'+u.id).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,14);
+  const dateStr = new Date(enr.quizResult ? enr.quizResult.date : enr.enrolledAt).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  return `
+  <div class="container" style="padding:50px 0 90px;">
+    <div class="breadcrumb"><a href="#/dashboard/student/courses">My Courses</a> / Certificate</div>
+    <div style="max-width:760px;margin:0 auto;background:var(--navy-800);border:2px solid var(--gold-500);border-radius:var(--radius);padding:56px 48px;text-align:center;position:relative;">
+      <div style="position:absolute;top:24px;left:24px;width:16px;height:34px;background:var(--gold-500);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);"></div>
+      <div class="eyebrow" style="justify-content:center;">Certificate of Completion</div>
+      <h1 style="font-size:2rem;margin:18px 0 6px;">${u.name}</h1>
+      <p style="color:var(--ink-500);">has successfully completed the course</p>
+      <h2 style="margin:14px 0 24px;color:var(--gold-500);font-size:1.5rem;">${c.title}</h2>
+      <div style="display:flex;justify-content:center;gap:50px;margin:30px 0;flex-wrap:wrap;">
+        <div><small style="color:var(--ink-500);display:block;">Instructor</small><b>${c.instructorName}</b></div>
+        <div><small style="color:var(--ink-500);display:block;">Date</small><b>${dateStr}</b></div>
+        ${c.quiz ? `<div><small style="color:var(--ink-500);display:block;">Quiz score</small><b>${enr.quizResult.score}%</b></div>` : ''}
+      </div>
+      <div style="font-family:var(--font-mono);font-size:.72rem;color:var(--ink-500);border-top:1px dashed var(--navy-700);padding-top:16px;margin-top:16px;">Certificate ID: ${certId}</div>
+    </div>
+    <div class="hero-ctas" style="justify-content:center;margin-top:26px;">
+      <button class="btn btn-primary" id="printCertBtn">🖨 Print / Save as PDF</button>
+      <a href="#/dashboard/student/courses" class="btn btn-outline">Back to My Courses</a>
+    </div>
+  </div>`;
+}
+function afterCertificate(courseId){
+  const btn = document.getElementById('printCertBtn');
+  if(btn) btn.onclick = ()=>window.print();
+}
+
+/* ======================= DASHBOARD GATE ======================= */
 function viewDashboardGate(role){
   const u = currentUser();
   if(!u){ setTimeout(()=>location.hash='#/login',0); return ''; }
-  return \`<div class="container" style="padding:40px 0;"><h2 style="margin-bottom:20px;">\${u.name}'s Dashboard (\${u.role})</h2>
-    <div class="grid-3">\${u.role==='student'?studentWidgets():instructorWidgets()}</div>
-  </div>\`;
+  return `<div id="dashRoot"></div>`;
 }
-function studentWidgets(){
+function afterDashboard(role, sub){
   const u = currentUser();
-  const myEnrs = DB.enrollments.filter(e=>e.userId===u.id);
-  return myEnrs.map(e=>{
-    const c = DB.courses.find(x=>x.id===e.courseId);
-    return \`
-    <div class="stat-card">
-      <b style="font-size:1.1rem;color:var(--ink-50);">\${c.title}</b>
-      <span style="display:block;margin:8px 0 16px;">\${e.progress.completedLessonIds.length} lessons done</span>
-      <a href="#/lesson/\${c.id}/\${c.curriculum[0].lessons[0].id}" class="btn btn-primary btn-sm">Resume course</a>
-    </div>\`;
-  }).join('') || '<div class="stat-card">No courses enrolled. <a href="#/courses">Browse courses</a></div>';
+  if(!u) return;
+  const parts = location.hash.replace('#/','').split('/');
+  if(u.role==='student') renderStudentDashboard(parts.slice(2));
+  else renderInstructorDashboard(parts.slice(2));
 }
-function instructorWidgets(){
-  const u = currentUser();
-  const myCourses = DB.courses.filter(c=>c.instructorId===u.id);
-  return myCourses.map(c=>\`
-    <div class="stat-card">
-      <b style="font-size:1.1rem;color:var(--ink-50);">\${c.title}</b>
-      <span style="display:block;margin:8px 0 16px;">Price: ৳\${c.price}</span>
-      <a href="#/course/\${c.id}" class="btn btn-primary btn-sm">View course</a>
-    </div>\`).join('') || '<div class="stat-card">No courses published yet.</div>';
-}
-function afterDashboard(role, sub){}
 
-/* ======================= CHECKOUT / LESSON / QUIZ / CERT ======================= */
-function viewCheckout(id){ return \`<div class="container" style="padding:40px 0;"><h3>Checkout for \${id}</h3><button class="btn btn-primary" onclick="enrollUser('\${currentUser().id}', '\${id}', {method:'mock',amount:100});location.hash='#/dashboard/student';location.reload();">Confirm Payment</button></div>\`; }
-function afterCheckout(){}
-function viewLesson(cid, lid){
-  const c = DB.courses.find(x=>x.id===cid);
-  const l = c.curriculum.flatMap(m=>m.lessons).find(x=>x.id===lid);
-  return \`
-  <div class="container" style="padding:40px 0;">
-    <div class="breadcrumb"><a href="#/dashboard/student">Dashboard</a> / Lesson</div>
-    <h2>\${l.title}</h2>
-    <div class="lesson-player" style="margin:20px 0;height:400px;border-radius:8px;">\${l.type==='video'?'▶ Video':'📄 Document'}</div>
-    \${l.content ? \`<p>\${l.content}</p>\` : ''}
-    <button class="btn btn-primary" onclick="
-      const e = getEnrollment('\${currentUser().id}', '\${cid}');
-      if(!e.progress.completedLessonIds.includes('\${lid}')) { e.progress.completedLessonIds.push('\${lid}'); saveDB(DB); alert('Lesson complete!'); }
-    ">Mark as Complete</button>
-  </div>\`;
+/* ---------- STUDENT DASHBOARD ---------- */
+function renderStudentDashboard(subParts){
+  const u = currentUser();
+  const tab = subParts[0] || 'overview';
+  const myEnrollments = DB.enrollments.filter(e=>e.userId===u.id);
+  const nav = [
+    {id:'overview',label:'Overview',icon:'🏠'},
+    {id:'courses',label:'My Courses',icon:'📚'},
+    {id:'orders',label:'Payment History',icon:'🧾'},
+    {id:'profile',label:'Profile',icon:'👤'}
+  ];
+  const root = document.getElementById('dashRoot');
+  root.innerHTML = `
+  <div class="dash-shell">
+    <aside class="dash-side">
+      <div class="who"><div class="dot">${u.name.charAt(0)}</div><div><b>${u.name}</b><small>Student</small></div></div>
+      <div class="dash-nav">
+        ${nav.map(n=>`<a href="#/dashboard/student/${n.id}" class="${tab===n.id?'active':''}">${n.icon} ${n.label}</a>`).join('')}
+      </div>
+    </aside>
+    <div class="dash-main" id="dashMain"></div>
+  </div>`;
+  const main = document.getElementById('dashMain');
+
+  if(tab==='learn'){
+    location.hash = `#/dashboard/student/courses`; return;
+  }
+
+  if(tab==='overview'){
+    const completedCourses = myEnrollments.filter(e=>{
+      const c = DB.courses.find(x=>x.id===e.courseId); const total = totalLessons(c);
+      return e.progress.completedLessonIds.length===total && total>0;
+    }).length;
+    main.innerHTML = `
+    <div class="dash-head"><h2>Welcome back, ${u.name.split(' ')[0]}</h2></div>
+    <div class="stat-row">
+      <div class="stat-card"><b>${myEnrollments.length}</b><span>Enrolled courses</span></div>
+      <div class="stat-card"><b>${completedCourses}</b><span>Completed</span></div>
+      <div class="stat-card"><b>${DB.payments.filter(p=>p.userId===u.id).length}</b><span>Orders</span></div>
+      <div class="stat-card"><b>${myEnrollments.filter(e=>e.quizResult && e.quizResult.passed).length}</b><span>Quizzes passed</span></div>
+    </div>
+    <h3>Continue learning</h3>
+    ${myEnrollments.length ? myEnrollments.slice(0,3).map(e=>enrollRow(e)).join('') : emptyCoursesBlock()}
+    `;
+    bindEnrollRows();
+  }
+  else if(tab==='courses'){
+    main.innerHTML = `<div class="dash-head"><h2>My Courses</h2><a href="#/courses" class="btn btn-outline btn-sm">Browse more courses</a></div>
+    ${myEnrollments.length ? myEnrollments.map(e=>enrollRow(e)).join('') : emptyCoursesBlock()}`;
+    bindEnrollRows();
+  }
+  else if(tab==='orders'){
+    const myOrders = DB.payments.filter(p=>p.userId===u.id).sort((a,b)=>new Date(b.date)-new Date(a.date));
+    main.innerHTML = `<div class="dash-head"><h2>Payment History</h2></div>
+    <div class="table-wrap"><table><thead><tr><th>Course</th><th>Method</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead><tbody>
+    ${myOrders.length ? myOrders.map(p=>{
+      const c = DB.courses.find(x=>x.id===p.courseId);
+      return `<tr><td>${c?c.title:'—'}</td><td style="text-transform:capitalize">${p.method}</td><td>${p.amount===0?'Free':'৳'+p.amount.toLocaleString()}</td><td>${new Date(p.date).toLocaleDateString()}</td><td><span class="pill ok">Paid</span></td></tr>`;
+    }).join('') : `<tr><td colspan="5"><div class="empty-state"><div class="glyph">🧾</div>No payment history yet.</div></td></tr>`}
+    </tbody></table></div>`;
+  }
+  else if(tab==='profile'){
+    main.innerHTML = `<div class="dash-head"><h2>Profile</h2></div>
+    <div class="auth-card" style="max-width:460px;padding:26px;">
+      <div class="field"><label>Full name</label><input type="text" id="pName" value="${u.name}"></div>
+      <div class="field"><label>Email</label><input type="email" id="pEmail" value="${u.email}" disabled></div>
+      <div class="field"><label>Member since</label><input type="text" value="${u.joined}" disabled></div>
+      <button class="btn btn-primary" id="saveProfile">Save changes</button>
+    </div>`;
+    document.getElementById('saveProfile').onclick=()=>{
+      const name = document.getElementById('pName').value.trim();
+      if(!name){ toast('Name cannot be empty.'); return; }
+      u.name = name; saveDB(DB); toast('Profile updated.'); renderStudentDashboard(['profile']); renderNav('dashboard');
+    };
+  }
 }
-function afterLesson(){}
-function viewQuiz(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Quiz Placeholder</h2></div>\`; }
-function afterQuiz(){}
-function viewCertificate(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Certificate Placeholder</h2></div>\`; }
-function afterCertificate(){}
-function viewCourseEditor(cid){ return \`<div class="container" style="padding:40px 0;"><h2>Editor Placeholder</h2></div>\`; }
-function afterCourseEditor(){}
+function emptyCoursesBlock(){
+  return `<div class="empty-state"><div class="glyph">📚</div>You haven't enrolled in any courses yet.<br><a href="#/courses" class="btn btn-primary btn-sm" style="margin-top:14px;">Browse courses</a></div>`;
+}
+function enrollRow(e){
+  const c = DB.courses.find(x=>x.id===e.courseId);
+  const total = totalLessons(c);
+  const pct = total ? Math.round((e.progress.completedLessonIds.length/total)*100) : 0;
+  const firstLesson = c.curriculum[0].lessons[0].id;
+  const done = courseCompleted(e, c);
+  return `<div class="enroll-row" data-course="${c.id}" data-lesson="${firstLesson}">
+    <div class="thumb" style="background:${c.color}"></div>
+    <div class="body">
+      <h4>${c.title}</h4>
+      <div class="progress-label"><span>${pct}% complete</span><span>${e.progress.completedLessonIds.length}/${total} lessons</span></div>
+      <div class="progress-ribbon"><i style="width:${pct}%"></i></div>
+    </div>
+    ${done ? `<a href="#/certificate/${c.id}" class="btn btn-primary btn-sm">🎓 Certificate</a>` : `<a href="#/lesson/${c.id}/${firstLesson}" class="btn btn-outline btn-sm">Continue</a>`}
+  </div>`;
+}
+function bindEnrollRows(){}
+
+/* ---------- INSTRUCTOR DASHBOARD ---------- */
+function renderInstructorDashboard(subParts){
+  const u = currentUser();
+  const tab = subParts[0] || 'overview';
+  const myCourses = DB.courses.filter(c=>c.instructorId===u.id);
+  const nav = [
+    {id:'overview',label:'Overview',icon:'🏠'},
+    {id:'courses',label:'My Courses',icon:'📚'},
+    {id:'students',label:'Students',icon:'🎓'},
+    {id:'earnings',label:'Earnings',icon:'💰'}
+  ];
+  const root = document.getElementById('dashRoot');
+  root.innerHTML = `
+  <div class="dash-shell">
+    <aside class="dash-side">
+      <div class="who"><div class="dot">${u.name.charAt(0)}</div><div><b>${u.name}</b><small>Instructor</small></div></div>
+      <div class="dash-nav">${nav.map(n=>`<a href="#/dashboard/instructor/${n.id}" class="${tab===n.id?'active':''}">${n.icon} ${n.label}</a>`).join('')}</div>
+    </aside>
+    <div class="dash-main" id="dashMain"></div>
+  </div>`;
+  const main = document.getElementById('dashMain');
+  const myCourseIds = myCourses.map(c=>c.id);
+  const myEnrollments = DB.enrollments.filter(e=>myCourseIds.includes(e.courseId));
+  const myEarnings = DB.payments.filter(p=>myCourseIds.includes(p.courseId));
+  const totalRevenue = myEarnings.reduce((s,p)=>s+p.amount,0);
+
+  if(tab==='overview'){
+    main.innerHTML = `
+    <div class="dash-head"><h2>Welcome back, ${u.name.split(' ')[0]}</h2></div>
+    <div class="stat-row">
+      <div class="stat-card"><b>${myCourses.length}</b><span>Published courses</span></div>
+      <div class="stat-card"><b>${myEnrollments.length}</b><span>Total enrollments</span></div>
+      <div class="stat-card"><b>৳${totalRevenue.toLocaleString()}</b><span>Total earnings</span></div>
+      <div class="stat-card"><b>${myEnrollments.filter(e=>e.quizResult && e.quizResult.passed).length}</b><span>Quiz passes</span></div>
+    </div>
+    <h3>Your courses</h3>
+    <div class="grid-3">${myCourses.map(courseCard).join('') || emptyCoursesBlock()}</div>`;
+  }
+  else if(tab==='courses'){
+    main.innerHTML = `<div class="dash-head"><h2>My Courses</h2><button class="btn btn-primary btn-sm" id="newCourseBtn">+ New course</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Title</th><th>Category</th><th>Price</th><th>Enrollments</th><th></th></tr></thead><tbody>
+    ${myCourses.map(c=>{
+      const n = DB.enrollments.filter(e=>e.courseId===c.id).length;
+      return `<tr><td>${c.title}</td><td>${c.category}</td><td>${c.price===0?'Free':'৳'+c.price.toLocaleString()}</td><td>${n}</td>
+      <td><a href="#/editor/${c.id}" class="btn btn-outline btn-sm">Manage content</a> <button class="btn btn-outline btn-sm editCourseBtn" data-id="${c.id}">Edit info</button> <button class="btn btn-danger btn-sm delCourseBtn" data-id="${c.id}">Delete</button></td></tr>`;
+    }).join('') || `<tr><td colspan="5"><div class="empty-state">No courses yet. Create your first one.</div></td></tr>`}
+    </tbody></table></div>`;
+    document.getElementById('newCourseBtn').onclick = ()=>openCourseModal(null);
+    document.querySelectorAll('.editCourseBtn').forEach(b=>b.onclick=()=>openCourseModal(b.dataset.id));
+    document.querySelectorAll('.delCourseBtn').forEach(b=>b.onclick=()=>{
+      if(confirm('Delete this course? This cannot be undone.')){
+        DB.courses = DB.courses.filter(c=>c.id!==b.dataset.id);
+        DB.enrollments = DB.enrollments.filter(e=>e.courseId!==b.dataset.id);
+        saveDB(DB); toast('Course deleted.'); renderInstructorDashboard(['courses']);
+      }
+    });
+  }
+  else if(tab==='students'){
+    main.innerHTML = `<div class="dash-head"><h2>Students</h2></div>
+    <div class="table-wrap"><table><thead><tr><th>Student</th><th>Course</th><th>Progress</th><th>Quiz score</th></tr></thead><tbody>
+    ${myEnrollments.length ? myEnrollments.map(e=>{
+      const student = DB.users.find(x=>x.id===e.userId);
+      const c = DB.courses.find(x=>x.id===e.courseId);
+      const total = totalLessons(c);
+      const pct = total ? Math.round((e.progress.completedLessonIds.length/total)*100) : 0;
+      const qr = e.quizResult;
+      return `<tr><td>${student?student.name:'Unknown'}</td><td>${c.title}</td><td>${pct}%</td><td>${qr ? `<span class="pill ${qr.passed?'ok':'fail'}">${qr.score}% ${qr.passed?'Pass':'Fail'}</span>` : `<span class="pill warn">Not taken</span>`}</td></tr>`;
+    }).join('') : `<tr><td colspan="4"><div class="empty-state">No students enrolled yet.</div></td></tr>`}
+    </tbody></table></div>`;
+  }
+  else if(tab==='earnings'){
+    main.innerHTML = `<div class="dash-head"><h2>Earnings</h2></div>
+    <div class="stat-row"><div class="stat-card"><b>৳${totalRevenue.toLocaleString()}</b><span>Total revenue</span></div>
+    <div class="stat-card"><b>${myEarnings.length}</b><span>Transactions</span></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Course</th><th>Method</th><th>Amount</th><th>Date</th></tr></thead><tbody>
+    ${myEarnings.length ? myEarnings.map(p=>{
+      const c = DB.courses.find(x=>x.id===p.courseId);
+      return `<tr><td>${c?c.title:'—'}</td><td style="text-transform:capitalize">${p.method}</td><td>${p.amount===0?'Free':'৳'+p.amount.toLocaleString()}</td><td>${new Date(p.date).toLocaleDateString()}</td></tr>`;
+    }).join('') : `<tr><td colspan="4"><div class="empty-state">No transactions yet.</div></td></tr>`}
+    </tbody></table></div>`;
+  }
+}
+
+function openCourseModal(courseId){
+  const u = currentUser();
+  const editing = courseId ? DB.courses.find(c=>c.id===courseId) : null;
+  const overlay = document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.innerHTML = `
+  <div class="modal-box" style="position:relative;">
+    <button class="close-x" id="closeModal">✕</button>
+    <h3>${editing?'Edit course':'Create a new course'}</h3>
+    <div class="field"><label>Title</label><input type="text" id="mTitle" value="${editing?editing.title:''}"></div>
+    <div class="two-col">
+      <div class="field"><label>Category</label><input type="text" id="mCategory" value="${editing?editing.category:''}" placeholder="e.g. Web Development"></div>
+      <div class="field"><label>Level</label><select id="mLevel"><option ${editing&&editing.level==='Beginner'?'selected':''}>Beginner</option><option ${editing&&editing.level==='Intermediate'?'selected':''}>Intermediate</option><option ${editing&&editing.level==='Advanced'?'selected':''}>Advanced</option></select></div>
+    </div>
+    <div class="field"><label>Price (BDT, 0 for free)</label><input type="number" id="mPrice" value="${editing?editing.price:0}"></div>
+    <div class="field"><label>Summary</label><textarea id="mSummary" rows="3">${editing?editing.summary:''}</textarea></div>
+    <p style="font-size:.78rem;color:var(--ink-500);">Lessons and quiz questions can be added after creating the course, via the sample structure included in this demo.</p>
+    <button class="btn btn-primary btn-block" id="saveCourseBtn">${editing?'Save changes':'Create course'}</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('closeModal').onclick=()=>overlay.remove();
+  overlay.onclick=(e)=>{ if(e.target===overlay) overlay.remove(); };
+  document.getElementById('saveCourseBtn').onclick=()=>{
+    const title = document.getElementById('mTitle').value.trim();
+    const category = document.getElementById('mCategory').value.trim() || 'General';
+    const level = document.getElementById('mLevel').value;
+    const price = parseInt(document.getElementById('mPrice').value) || 0;
+    const summary = document.getElementById('mSummary').value.trim();
+    if(!title){ toast('Please enter a course title.'); return; }
+    if(editing){
+      Object.assign(editing, {title, category, level, price, summary});
+      toast('Course updated.');
+    } else {
+      DB.courses.push({
+        id: uid('c'), title, category, level, price, instructorId:u.id, instructorName:u.name,
+        color:'linear-gradient(135deg,#2b3a67,#1b2540)', summary, rating:0, reviews:[],
+        curriculum:[{id:'m1',title:'Module 1', lessons:[{id:'l1',title:'Introduction',type:'text',content:'Add your lesson content here.'}]}],
+        quiz:{id:uid('q'),title:'Course Check',passScore:60,questions:[{id:uid('qq'),text:'Sample question — edit in a future update.',options:['Option A','Option B','Option C','Option D'],correctIndex:0}]}
+      });
+      toast('Course created.');
+    }
+    saveDB(DB); overlay.remove(); renderInstructorDashboard(['courses']);
+  };
+}
+
+/* ======================= INSTRUCTOR CONTENT EDITOR ======================= */
+function viewCourseEditor(courseId){
+  const u = currentUser();
+  const c = DB.courses.find(x=>x.id===courseId);
+  if(!u || u.role!=='instructor'){ setTimeout(()=>location.hash='#/login',0); return ''; }
+  if(!c || c.instructorId!==u.id) return `<div class="container" style="padding:80px 0;">Course not found. <a href="#/dashboard/instructor/courses">Back to my courses</a></div>`;
+  return `
+  <div class="container" style="padding:34px 0 90px;">
+    <div class="breadcrumb"><a href="#/dashboard/instructor/courses">My Courses</a> / Manage content</div>
+    <div class="dash-head"><h2>${c.title}</h2><a href="#/course/${c.id}" class="btn btn-outline btn-sm">Preview course page</a></div>
+    <div class="tab-row">
+      <button class="tab-btn active" data-etab="curriculum">Curriculum</button>
+      <button class="tab-btn" data-etab="quiz">Quiz</button>
+    </div>
+    <div id="editorBody"></div>
+  </div>`;
+}
+function afterCourseEditor(courseId){
+  document.querySelectorAll('[data-etab]').forEach(b=>{
+    b.onclick = ()=>{
+      document.querySelectorAll('[data-etab]').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      renderEditorTab(courseId, b.dataset.etab);
+    };
+  });
+  renderEditorTab(courseId, 'curriculum');
+}
+function renderEditorTab(courseId, tab){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const body = document.getElementById('editorBody');
+  if(tab==='curriculum'){
+    body.innerHTML = `
+    ${c.curriculum.map(m=>`
+      <div class="curriculum-item">
+        <div class="curriculum-head"><span>${m.title}</span>
+          <span>
+            <button class="btn btn-ghost btn-sm addLessonBtn" data-m="${m.id}">+ Lesson</button>
+            <button class="btn btn-danger btn-sm delModuleBtn" data-m="${m.id}">Delete module</button>
+          </span>
+        </div>
+        ${m.lessons.map(l=>`<div class="lesson-row"><span class="l-left">${l.type==='video'?'▶':'📄'} ${l.title}</span>
+          <span><button class="btn btn-ghost btn-sm editLessonBtn" data-m="${m.id}" data-l="${l.id}">Edit</button> <button class="btn btn-ghost btn-sm delLessonBtn" data-m="${m.id}" data-l="${l.id}" style="color:var(--danger)">Delete</button></span></div>`).join('') || `<div class="lesson-row" style="color:var(--ink-500);">No lessons yet.</div>`}
+      </div>`).join('')}
+    <div class="auth-card" style="padding:18px;margin-top:16px;max-width:420px;">
+      <div class="field"><label>New module title</label><input type="text" id="newModuleTitle" placeholder="e.g. Advanced Topics"></div>
+      <button class="btn btn-outline btn-block" id="addModuleBtn">+ Add module</button>
+    </div>
+    `;
+    
+    document.getElementById('addModuleBtn').onclick = ()=>{
+      const title = document.getElementById('newModuleTitle').value.trim();
+      if(!title) return;
+      c.curriculum.push({id:uid('m'), title, lessons:[]}); saveDB(DB); renderEditorTab(courseId, 'curriculum');
+    };
+    document.querySelectorAll('.delModuleBtn').forEach(b=>b.onclick=()=>{
+      if(!confirm('Delete this module?')) return;
+      c.curriculum = c.curriculum.filter(x=>x.id!==b.dataset.m); saveDB(DB); renderEditorTab(courseId, 'curriculum');
+    });
+    document.querySelectorAll('.addLessonBtn').forEach(b=>b.onclick=()=>openLessonModal(courseId, b.dataset.m, null));
+    document.querySelectorAll('.editLessonBtn').forEach(b=>b.onclick=()=>openLessonModal(courseId, b.dataset.m, b.dataset.l));
+    document.querySelectorAll('.delLessonBtn').forEach(b=>b.onclick=()=>{
+      if(!confirm('Delete this lesson?')) return;
+      const m = c.curriculum.find(x=>x.id===b.dataset.m);
+      m.lessons = m.lessons.filter(x=>x.id!==b.dataset.l); saveDB(DB); renderEditorTab(courseId, 'curriculum');
+    });
+  } else if(tab==='quiz'){
+    if(!c.quiz) c.quiz = {id:uid('q'),title:'Course Quiz',passScore:60,questions:[]};
+    const q = c.quiz;
+    body.innerHTML = `
+    <div class="auth-card" style="padding:18px;margin-bottom:20px;max-width:420px;">
+      <div class="field"><label>Quiz Title</label><input type="text" id="qTitle" value="${q.title}"></div>
+      <div class="field"><label>Passing Score (%)</label><input type="number" id="qPass" value="${q.passScore}"></div>
+      <button class="btn btn-outline btn-block" id="saveQSettings">Save settings</button>
+    </div>
+    <h3>Questions</h3>
+    ${q.questions.map((qq,i)=>`
+      <div class="curriculum-item" style="padding:16px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><b>${i+1}. ${qq.text}</b> <button class="btn btn-danger btn-sm delQBtn" data-q="${qq.id}">Delete</button></div>
+        ${qq.options.map((opt,oi)=>`<div style="font-size:.85rem;color:${oi===qq.correctIndex?'var(--success)':'var(--ink-300)'};">${String.fromCharCode(65+oi)}. ${opt} ${oi===qq.correctIndex?'(Correct)':''}</div>`).join('')}
+      </div>
+    `).join('')}
+    <div class="auth-card" style="padding:18px;margin-top:16px;max-width:600px;">
+      <h4>Add new question</h4>
+      <div class="field"><label>Question text</label><input type="text" id="nqText"></div>
+      <div class="two-col">
+        <div class="field"><label>Option A</label><input type="text" id="nqA"></div>
+        <div class="field"><label>Option B</label><input type="text" id="nqB"></div>
+        <div class="field"><label>Option C</label><input type="text" id="nqC"></div>
+        <div class="field"><label>Option D</label><input type="text" id="nqD"></div>
+      </div>
+      <div class="field"><label>Correct Answer</label><select id="nqCorrect"><option value="0">Option A</option><option value="1">Option B</option><option value="2">Option C</option><option value="3">Option D</option></select></div>
+      <button class="btn btn-outline btn-block" id="addQBtn">+ Add question</button>
+    </div>
+    `;
+    document.getElementById('saveQSettings').onclick=()=>{
+      q.title = document.getElementById('qTitle').value || 'Course Quiz';
+      q.passScore = parseInt(document.getElementById('qPass').value) || 60;
+      saveDB(DB); toast('Settings saved.');
+    };
+    document.querySelectorAll('.delQBtn').forEach(b=>b.onclick=()=>{
+      if(!confirm('Delete question?')) return;
+      q.questions = q.questions.filter(x=>x.id!==b.dataset.q); saveDB(DB); renderEditorTab(courseId, 'quiz');
+    });
+    document.getElementById('addQBtn').onclick=()=>{
+      const text = document.getElementById('nqText').value.trim();
+      const opts = [document.getElementById('nqA').value.trim(), document.getElementById('nqB').value.trim(), document.getElementById('nqC').value.trim(), document.getElementById('nqD').value.trim()];
+      if(!text || opts.some(x=>!x)){ toast('Fill all fields.'); return; }
+      q.questions.push({id:uid('qq'), text, options:opts, correctIndex:parseInt(document.getElementById('nqCorrect').value)});
+      saveDB(DB); renderEditorTab(courseId, 'quiz');
+    };
+  }
+}
+
+function openLessonModal(courseId, moduleId, lessonId){
+  const c = DB.courses.find(x=>x.id===courseId);
+  const m = c.curriculum.find(x=>x.id===moduleId);
+  const l = lessonId ? m.lessons.find(x=>x.id===lessonId) : null;
+  const overlay = document.createElement('div');
+  overlay.className='modal-overlay';
+  overlay.innerHTML = `
+  <div class="modal-box" style="position:relative;">
+    <button class="close-x" id="closeLModal">✕</button>
+    <h3>${l?'Edit lesson':'Add lesson'}</h3>
+    <div class="field"><label>Title</label><input type="text" id="lTitle" value="${l?l.title:''}"></div>
+    <div class="field"><label>Type</label><select id="lType"><option value="video" ${l&&l.type==='video'?'selected':''}>Video</option><option value="text" ${l&&l.type==='text'?'selected':''}>Text</option></select></div>
+    <div class="field"><label>Duration (for video)</label><input type="text" id="lDur" value="${l?l.duration||'':''}" placeholder="e.g. 10:30"></div>
+    <div class="field"><label>Text Content</label><textarea id="lContent" rows="5" placeholder="Only for text lessons...">${l?l.content||'':''}</textarea></div>
+    <button class="btn btn-primary btn-block" id="saveLBtn">${l?'Save lesson':'Add lesson'}</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('closeLModal').onclick=()=>overlay.remove();
+  document.getElementById('saveLBtn').onclick=()=>{
+    const title = document.getElementById('lTitle').value.trim();
+    if(!title) return toast('Please enter a title');
+    const data = {
+      title,
+      type: document.getElementById('lType').value,
+      duration: document.getElementById('lDur').value,
+      content: document.getElementById('lContent').value
+    };
+    if(l){ Object.assign(l, data); }
+    else { m.lessons.push({id:uid('l'), ...data}); }
+    saveDB(DB); overlay.remove(); renderEditorTab(courseId, 'curriculum');
+  };
+}
 
 /* ======================= THEME + NAV TOGGLES ======================= */
 document.getElementById('themeBtn').onclick = ()=>{
